@@ -11,8 +11,8 @@
             }
         },
         {
-            "type": "composer",
-            "url": "https://artifactory.tech.udg.de/artifactory/api/composer/composer-local"
+            "type": "vcs",
+            "url": "git@github.com:valuelogic/customer-burmester-frontend.git"
         }
     ],
     "config": {
@@ -29,10 +29,7 @@
         "php": "~7.2",
         "ocramius/package-versions": "1.4.0",
         "shopware/platform": "^6.3",
-        "udg/customer-burmester-frontend": "*",
-        "udg-shopware/udg-plugin-automation": "6.*",
-        "udg-shopware/swag-customized-products": "^2.6.1",
-        "udg-shopware/dersko-basic-auth": "1.*"
+        "value-logic/customer-burmester-frontend": "dev-master"
     },
     "require-dev": {
         "ext-tokenizer": "*",
