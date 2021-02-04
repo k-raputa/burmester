@@ -1,0 +1,210 @@
+{% block sw_cms_block_storefinder %}
+    <vue-app class="vue-app-store-finder">
+        <template>
+            <vue-component-store-finder inline-template
+                                        initial-lat="50.90072325"
+                                        initial-lng="10.4699707031"
+                                        initial-zoom="6"
+                                        location-zoom="12"
+                                        max-zoom="14"
+                                        url="/udg-storefinder/index"
+                                        result-include-distance="50"
+                                        result-include-name-match-percentage="25"
+                                        result-fallback-items="6"
+                                        marker-icon-url-distributor="/bundles/udgstorefinder/storefront/static/img/module/udgstorefinder/marker-pin-black.png"
+                                        marker-icon-url-trader="/bundles/udgstorefinder/storefront/static/img/module/udgstorefinder/marker-pin-white.png">
+                <div class="component-store-finder">
+                    <div class="container-fluid">
+                        <h1>
+                            {{ 'sw-cms.elements.udg.storefinder.template.title.map'|trans }}
+                        </h1>
+
+                        <form class="store-finder-search"
+                              @submit="submit($event)">
+                            <div class="form-row">
+                                <div class="form-group offset-lg-3 col-lg-6 col-md-12">
+                                    <div class="btn-search-container">
+                                        <input type="text"
+                                               class="form-control search-input"
+                                               autocomplete="on"
+                                               placeholder="{{ 'sw-cms.elements.udg.storefinder.template.searchPlaceholder'|trans }}"
+                                               name="store-finder-search"
+                                               v-model="searchQueue">
+
+                                        <button class="btn btn-input btn-clear-input"
+                                                type="button"
+                                                @click="reset()"
+                                                v-show="searchQueue">
+                                            <i class="icon icon-close">
+                                                <svg class="svg-import"><use xlink:href="#icon-close" /></svg>
+                                            </i>
+                                        </button>
+
+                                        <button class="btn btn-input btn-search"
+                                                type="submit">
+                                            <i class="icon icon-magnifier">
+                                                <svg class="svg-import"><use xlink:href="#icon-magnifier" /></svg>
+                                            </i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+
+                        <div class="store-finder-map"></div>
+                        <div class="store-finder-legend">
+                            <div class="legend-item">
+                                <img class="legend-icon"
+                                     alt="Store Type"
+                                     :src="markerIconUrlDistributor">
+                                <span class="legend-label">
+									{{ 'sw-cms.elements.udg.storefinder.template.labels.distributor'|trans }}
+								</span>
+                            </div>
+                            <div class="legend-item">
+                                <img class="legend-icon"
+                                     alt="Store Type"
+                                     :src="markerIconUrlTrader">
+                                <span class="legend-label">
+									{{ 'sw-cms.elements.udg.storefinder.template.labels.merchant'|trans }}
+								</span>
+                            </div>
+                        </div>
+
+                        <div class="store-finder-stores">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6"
+                                     v-for="store in filteredStores">
+                                    <div class="stores-store">
+                                        <img class="store-marker"
+                                             alt="Store Type"
+                                             :src="store.markerUrl">
+
+                                        <div class="store-block">
+                                            <div class="store-name">
+                                                {{ '{{' }}store.company{{ '}}' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="store-block">
+                                            <div class="store-street"
+                                                 v-if="store.street">
+                                                {{ '{{' }}store.street{{ '}}' }}
+                                            </div>
+                                            <div class="store-location"
+                                                 v-if="store.location">
+                                                {{ '{{' }}store.location{{ '}}' }}
+                                            </div>
+                                            <div class="store-country"
+                                                 v-if="store.country">
+                                                {{ '{{' }}store.country{{ '}}' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="store-block">
+                                            <div class="store-phone"
+                                                 v-if="store.phone">
+                                                <a class="anchor anchor-default"
+                                                   :href="`tel:${store.phoneRaw}`">
+                                                    {{ '{{' }}store.phone{{ '}}' }}
+                                                </a>
+                                            </div>
+                                            <div class="store-email"
+                                                 v-if="store.email">
+                                                <a class="anchor anchor-default"
+                                                   :href="`mailto:${store.email}`">
+                                                    {{ '{{' }}store.email{{ '}}' }}
+                                                </a>
+                                            </div>
+                                            <div class="store-web"
+                                                 v-if="store.web">
+                                                <a class="anchor anchor-default"
+                                                   :href="store.web"
+                                                   target="_blank">
+                                                    {{ '{{' }}store.displayUrl{{ '}}' }}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="store-block">
+                                            <button class="btn btn-primary"
+                                                    type="button"
+                                                    @click="navigateToStore(store)">
+                                                {{ 'sw-cms.elements.udg.storefinder.template.labels.findOnMap'|trans }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script class="store-finder-info-window-template" type="text/x-handlebars-template">
+                        <div class="element-store-finder-info-window">
+                            <div class="info-window-block">
+                                <div class="store-name">
+                                    {company}
+                                </div>
+                            </div>
+
+                            <div class="info-window-block">
+                                <div class="store-street">
+                                    {street}
+                                </div>
+                                <div class="store-location">
+                                    {location}
+                                </div>
+                                <div class="store-country">
+                                    {country}
+                                </div>
+                            </div>
+
+                            <div class="info-window-block">
+                                <div class="store-phone"
+                                     v-if="store.phone">
+                                    <a class="anchor anchor-default"
+                                       href="tel:{phoneRaw}">
+                                        {phone}
+                                    </a>
+                                </div>
+                                <div class="store-email"
+                                     v-if="store.email">
+                                    <a class="anchor anchor-default"
+                                       href="mailto:{email}">
+                                        {email}
+                                    </a>
+                                </div>
+                                <div class="store-web"
+                                     v-if="store.web">
+                                    <a class="anchor anchor-default"
+                                       href="{web}"
+                                       target="_blank">
+                                        {displayUrl}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="info-window-block">
+                                <a class="btn btn-link"
+                                   href="https://www.google.com/maps?q={latitude},{longitude}"
+                                   target="_blank">
+                                    {{ 'sw-cms.elements.udg.storefinder.template.labels.calculateRoute'|trans }}
+                                </a>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </vue-component-store-finder>
+        </template>
+    </vue-app>
+
+    {% if shopware.config.UdgStorefinder.config %}
+        {% set apiKey = shopware.config.UdgStorefinder.config.apiKey %}
+    {%  else %}
+        {% set apiKey = element.config.mapApiKey.value %}
+    {% endif %}
+
+    <script defer src="https://maps.googleapis.com/maps/api/js?key={{ apiKey }}&libraries=places,geometry&language=de"></script>
+{% endblock %}
+

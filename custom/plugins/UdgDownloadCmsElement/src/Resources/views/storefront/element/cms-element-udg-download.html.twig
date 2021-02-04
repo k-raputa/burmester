@@ -1,0 +1,22 @@
+{% import "@UdgDownloadCmsElement/storefront/element/macro/macro.html.twig" as macro %}
+
+{% block element_udg_download %}
+
+    {%  set config = element.fieldConfig.elements %}
+    <div class="link-wrapper">
+        <a href="{{ element.data.media.url }}" class="link theme-white">
+            <span class="label chapter-default">
+                {% if element.data.media.translated.title|length > 0 %}
+                    {{ element.data.media.translated.title }}
+                {% else %}
+                    {{ element.data.media.fileName }}.{{ element.data.media.fileExtension }}
+                {% endif %}
+            </span>
+            <span class="data chapter-secondary">{{ macro.mimetype(element.data.media.mimeType) }} – {{ macro.bytesToSize(element.data.media.fileSize) }}</span>
+            <i class="icon">
+                <svg class="svg-import "><use xlink:href="#Icon-Download" /></svg>
+            </i>
+        </a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,100 @@
+{% sw_extends '@Storefront/storefront/layout/footer/footer.html.twig' %}
+
+{% block layout_footer_inner_container %}
+    {% block layout_footer_navigation %}
+        {% block layout_footer_navigation_hotline %}
+        {% endblock %}
+
+        {% block layout_footer_navigation_columns %}
+            <div class="row">
+                {% for root in page.footer.navigation.tree %}
+                    {% block layout_footer_navigation_column %}
+                        <div class="col-md-3">
+                            {% block layout_footer_navigation_information_headline %}
+                                <span class="footer-section-title">{{ root.category.translated.name }}</span>
+                            {% endblock %}
+
+                            {% block layout_footer_navigation_information_content %}
+                                {% block layout_footer_navigation_information_links %}
+                                    <ul class="footer-navigation">
+                                        {% for treeItem in root.children %}
+                                            {% set category = treeItem.category %}
+                                            {% set name = category.translated.name %}
+                                            {% set externalLink = category.translated.externalLink %}
+                                            {% block layout_footer_navigation_information_link_item %}
+                                                <li>
+                                                    {% block layout_footer_navigation_information_link %}
+                                                        <a href="{% if externalLink %}{{ externalLink }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: category.id }) }}{% endif %}"
+                                                           title="{{ name }}">
+                                                            {{ name }}
+                                                        </a>
+                                                    {% endblock %}
+                                                </li>
+                                            {% endblock %}
+                                        {% endfor %}
+                                    </ul>
+                                {% endblock %}
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endfor %}
+            </div>
+        {% endblock %}
+    {% endblock %}
+
+    {% block layout_footer_payment_shipping_logos %}{% endblock %}
+
+    {% block layout_footer_bottom %}
+        {% block layout_footer_vat %}{% endblock %}
+        {% block layout_footer_copyright %}{% endblock %}
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="footer-bottom">
+                    <div class="footer-legal">
+                        <span>&copy; {{ "now"|date("Y") }} {{ shopware.config.core.basicInformation.shopName }}</span>
+                        <span class="rights-claim">. All rights reserved.</span>
+                        <ul>
+                            {% if shopware.config.core.basicInformation.imprintPage is not null %}
+                                <li>
+                                    <a href="{{ seoUrl('frontend.maintenance.singlepage',{ id: shopware.config.core.basicInformation.imprintPage }) }}"
+                                   title="{{ "general.imprintLink"|trans|sw_sanitize }}">
+                                    {{ "general.imprintLink"|trans|sw_sanitize }}
+                                </a>
+                                </li>
+                            {% endif %}
+
+                            {% if shopware.config.core.basicInformation.privacyPage is not null %}
+                                <li>
+                                <a href="{{ seoUrl('frontend.maintenance.singlepage',{ id: shopware.config.core.basicInformation.privacyPage }) }}"
+                                   title="{{ "general.privacyLink"|trans|sw_sanitize }}">
+                                    {{ "general.privacyLink"|trans|sw_sanitize }}
+                                </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                    {% block layout_footer_service_menu %}
+                        {% block layout_footer_service_menu_content %}
+                            <div class="footer-social-media">
+                                {% for serviceMenuItem in page.header.serviceMenu %}
+                                    {% block layout_footer_service_menu_item %}
+                                        <a href="{% if serviceMenuItem.externalLink %}{{ serviceMenuItem.externalLink }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: serviceMenuItem.id }) }}{% endif %}"
+                                           title="{{ serviceMenuItem.translated.name }}">
+                                            <i class="icon">
+                                                <svg class="svg-import "><use xlink:href="#Icon-Footer-Social-{{ serviceMenuItem.translated.name }}" /></svg>
+                                            </i>
+                                        </a>
+                                    {% endblock %}
+                                {% endfor %}
+                            </div>
+                        {% endblock %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    </div>
+
+{% endblock %}

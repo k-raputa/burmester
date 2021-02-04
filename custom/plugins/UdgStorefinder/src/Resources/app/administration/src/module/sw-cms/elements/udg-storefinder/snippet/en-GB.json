@@ -1,0 +1,33 @@
+{
+    "sw-cms": {
+        "elements": {
+            "udg": {
+                "storefinder": {
+                    "general": {
+                        "label": "Google Maps Store Finder Element"
+                    },
+
+                    "config": {
+                        "description": "Feel free to customize the look and feel of your Location Finder",
+                        "mapUrl": {
+                            "label": "Map URL",
+                            "placeholder": "Insert maps url here..."
+                        },
+                        "mapApiKey": {
+                            "label": "API Key",
+                            "placeholder": "Insert api key here..."
+                        },
+                        "mapWidth": {
+                            "label": "Map width",
+                            "placeholder": "Insert maps width here..."
+                        },
+                        "mapHeight": {
+                            "label": "Map height",
+                            "placeholder": "Insert maps height here..."
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

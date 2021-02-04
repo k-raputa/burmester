@@ -1,0 +1,9 @@
+{% set price = page.product.calculatedPrice %}
+
+{% if page.product.calculatedPrices|length == 1 %}
+    {% set price = page.product.calculatedPrices.first %}
+{% endif %}
+
+{% if price.unitPrice > 0 or buyable %}
+    {{ price.unitPrice|currency }}
+{% endif %}

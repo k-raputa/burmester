@@ -1,0 +1,15 @@
+{% set activePath = page.header.navigation.active.path ~ page.header.navigation.active.id ~ '|' %}
+{% set themeHeaderColor = page.cmsPage.translated.customFields['udgextendedpagetemplate_css'] ?: 'theme-default' %}
+
+{% if activeRoute|lower != 'frontend.navigation.page' and activeRoute|lower != 'frontend.detail.page' %}
+    {% set themeHeaderColor = 'theme-silver-grey-light' %}
+{% endif %}
+
+<header class="component-header"
+        data-plugin="header"
+        data-event-bubbling-intercept="navigation">
+    <div class="element-theme theme-transition {{ themeHeaderColor }}">
+        {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/desktop/header.html.twig' %}
+        {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/mobile/header.html.twig' %}
+    </div>
+</header>

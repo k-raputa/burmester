@@ -1,0 +1,55 @@
+<div class="navigation-layer nav-id-{{ navigationTree.category.id }}">
+    <div class="container-fluid">
+        <nav class="navbar"
+             itemscope
+             itemtype="http://schema.org/SiteNavigationElement">
+            <div class="navigation-layer-back-container">
+                <button
+                    class="btn btn-link btn-lg btn-mobile-navigation btn-navigation-back active action-nav-item"
+                    data-navigation-layer-reference="">
+                    <i class="icon icon-chevron-left"><svg class="svg-import"><use xlink:href="#icon-chevron-left-thin"></use></svg></i>
+                    {{ navigationTree.category.translated.name }}
+                </button>
+            </div>
+
+            <ul class="navbar-nav">
+                {% for treeItem in navigationTree.children %}
+
+                    {% set id = treeItem.category.id %}
+                    {% set name = treeItem.category.translated.name %}
+                    {% set link = treeItem.category.externalLink %}
+                    {% set active = '|'~id~'|' in activePath ? true : false %}
+                    {% set childrenCount = treeItem.children|length %}
+
+                    <li class="nav-item nav-item-indicator{% if active %} active{% endif %}"
+                        itemprop="name">
+                        {% if treeItem.category.type == 'folder' %}
+                            <div class="btn btn-link btn-lg btn-mobile-navigation action-nav-item btn-navigation-light"
+                                 title="{{ name }}">
+                                {{ name }}
+                            </div>
+                        {% else %}
+                            <a class="btn btn-link btn-lg btn-mobile-navigation btn-navigation-light {% if childrenCount %}action-nav-item {% else %} {% endif %}"
+                               href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}"
+                               {% if childrenCount %}data-navigation-layer-reference="nav-id-{{ id }}"{% endif %}
+                               itemprop="url"
+                               title="{{ name }}">
+                                {{ name }}
+                                {% if childrenCount %}
+                                    <i class="icon ">
+                                        <svg class="svg-import">
+                                            <use xlink:href="#icon-chevron-down"/>
+                                        </svg>
+                                    </i>
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</div>
+
+
+

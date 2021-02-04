@@ -1,0 +1,17 @@
+{% block sw_cms_block_bigcontentslider %}
+    <div class="sw-cms-block-bigcontentslider">
+        <div class="sw-cms-block-bigcontentslider__slidername">
+            <strong>Slidername:</strong>
+            <slot name="slidername"></slot>
+        </div>
+        <div class="sw-cms-block-bigcontentslider__top">
+            <slot name="top"></slot>
+        </div>
+        <div class="sw-cms-block-bigcontentslider__middle">
+            <slot name="middle"></slot>
+        </div>
+        <div class="sw-cms-block-bigcontentslider__bottom">
+            <slot name="bottom"></slot>
+        </div>
+    </div>
+{% endblock %}

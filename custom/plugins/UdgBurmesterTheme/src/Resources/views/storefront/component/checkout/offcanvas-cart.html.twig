@@ -1,0 +1,18 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{% block component_offcanvas_cart_actions_promotion_form %}{% endblock %}
+
+
+{% block component_offcanvas_cart_actions_checkout %}
+    {% if isCartNotEmpty %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
+{% block component_offcanvas_cart_actions_cart %}
+    <a href="{{ path('frontend.checkout.cart.page') }}"
+       class="anchor anchor-secondary"
+       title="{{ "checkout.proceedToCart"|trans|striptags }}">
+        {{ "checkout.proceedToCart"|trans|sw_sanitize }}
+    </a>
+{% endblock %}

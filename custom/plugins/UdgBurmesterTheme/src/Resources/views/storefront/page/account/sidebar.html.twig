@@ -1,0 +1,19 @@
+{% sw_extends '@Storefront/storefront/page/account/sidebar.html.twig' %}
+
+{% block page_account_sidebar_link_payment %}{% endblock %}
+{% block page_account_sidebar_link_orders %}{% endblock %}
+
+{% block page_account_sidebar_logout %}
+    <a href="{{ path('frontend.account.logout.page') }}"
+       class="btn btn-link account-aside-btn">
+        {{ "account.logout"|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+
+{% block page_account_sidebar_guest_abort %}
+    <a href="{{ path('frontend.account.logout.page') }}"
+       class="btn btn-link account-aside-btn">
+        {{ "account.guestAbort"|trans|sw_sanitize }}
+    </a>
+{% endblock %}
+

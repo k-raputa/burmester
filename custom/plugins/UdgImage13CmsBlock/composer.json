@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-image-1-2-cms-block",
+    "description": "Image-CMS-Block 1:3",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgImage13CmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgImage13CmsBlock",
+        "shopware-plugin-class": "UdgImage13CmsBlock\\UdgImage13CmsBlock",
+        "label": {
+            "de-DE": "Image-CMS-Block 1:3",
+            "en-GB": "Image-CMS-Block 1:3"
+        }
+    }
+}

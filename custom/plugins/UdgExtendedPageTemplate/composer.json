@@ -1,0 +1,18 @@
+{
+  "name": "udg-shopware/udg-extended-page-template",
+  "description": "extends the page template",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "UdgExtendedPageTemplate\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "UdgExtendedPageTemplate\\UdgExtendedPageTemplate",
+    "label": {
+      "de-DE": "extends the page template",
+      "en-GB": "extends the page template"
+    }
+  }
+}

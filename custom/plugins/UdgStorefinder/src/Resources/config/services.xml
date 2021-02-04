@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="UdgStorefinder\Entity\UdgStorefinderDefinition">
+            <tag name="shopware.entity.definition" entity="udg_storefinder" />
+        </service>
+
+        <service id="UdgStorefinder\Entity\Aggregate\UdgStorefinderTranslation\UdgStorefinderTranslationDefinition">
+            <tag name="shopware.entity.definition" entity="udg_storefinder_translation" />
+        </service>
+
+        <service id="UdgStorefinder\Resources\app\storefront\snippets\de_DE\Snippets">
+            <tag name="shopware.snippet.file"/>
+        </service>
+
+        <service id="UdgStorefinder\Resources\app\storefront\snippets\en_GB\Snippets">
+            <tag name="shopware.snippet.file"/>
+        </service>
+
+        <service id="udg.storefinder.location" class="UdgStorefinder\Service\LocationService" public="true">
+            <argument type="service" id="udg_storefinder.repository"/>
+            <argument type="service" id="language.repository"/>
+        </service>
+
+        <service id="twig.extension.udgstorefinder" class="UdgStorefinder\Storefront\Framework\Twig\Extension\UdgStorefinderExtension">
+            <argument type="service" id="udg.storefinder.location"/>
+            <tag name="twig.extension"/>
+        </service>
+    </services>
+</container>

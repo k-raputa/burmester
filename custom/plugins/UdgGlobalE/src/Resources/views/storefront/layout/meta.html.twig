@@ -1,0 +1,25 @@
+{% sw_extends '@Storefront/storefront/layout/meta.html.twig' %}
+
+{% block layout_head_javascript_tracking %}
+    {{ parent() }}
+
+    {% if shopware.config.UdgGlobalE.config.MerchantID %}
+        <script async="async">
+            (function() {
+                var s = document.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = '//burmester-gepi.bglobale.com/proxy/get/{{ shopware.config.UdgGlobalE.config.MerchantID }}';
+                document.getElementsByTagName('head')[0].appendChild(s);
+            })();
+        </script>
+    {% endif %}
+{% endblock %}
+
+{% block layout_head_stylesheet %}
+    {{ parent() }}
+
+    {% if shopware.config.UdgGlobalE.config.MerchantID %}
+        <link id="GEPIStyles" rel="stylesheet" href="//burmester-gepi.bglobale.com/proxy/css/{{ shopware.config.UdgGlobalE.config.MerchantID }}">
+    {% endif %}
+{% endblock %}

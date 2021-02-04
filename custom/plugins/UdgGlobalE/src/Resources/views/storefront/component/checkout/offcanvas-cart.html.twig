@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/component/checkout/offcanvas-cart.html.twig' %}
+
+{% block component_offcanvas_cart_actions_checkout %}
+    <a href="{{ path('frontend.checkout.global-e.page') }}"
+       class="btn btn-block {% if isCartNotEmpty %}btn-primary{% else %}btn-light disabled{% endif %}"
+       title="{{ "checkout.proceedToCheckout"|trans|striptags }}">
+        {{ "checkout.proceedToCheckout"|trans|sw_sanitize }}
+    </a>
+{% endblock %}

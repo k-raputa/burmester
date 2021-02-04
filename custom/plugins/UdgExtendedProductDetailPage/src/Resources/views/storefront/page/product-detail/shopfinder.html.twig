@@ -1,0 +1,10 @@
+{% if buyable == false %}
+    <div class="buy-product">
+        <p v-if="engravedText && engravedPrice" class="price h2">{{"{{engravedPrice}}"}}</p>
+        <p v-else-if="price" class="price h2">{{"{{price}}"}}</p>
+        <a href="{{ seoUrl('frontend.navigation.page', { navigationId: shopware.config.core.basicInformation.storefinder  }) }}"
+           class="btn btn-primary btn-lg">
+            {{ "UdgExtendedProductDetailPage.shopfinder.link.label"|trans }}
+        </a>
+    </div>
+{% endif %}

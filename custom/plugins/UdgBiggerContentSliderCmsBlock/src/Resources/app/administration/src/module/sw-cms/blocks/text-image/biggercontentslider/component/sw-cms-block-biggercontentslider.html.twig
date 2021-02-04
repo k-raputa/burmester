@@ -1,0 +1,19 @@
+{% block sw_cms_block_biggercontentslider %}
+    <div class="sw-cms-block-biggercontentslider">
+        <div class="sw-cms-block-biggercontentslider__left">
+            <slot name="text"></slot>
+        </div>
+        <div class="sw-cms-block-biggercontentslider__right">
+            <strong>Slidername:</strong>
+            <slot name="slidername"></slot>
+        </div>
+        <div class="sw-cms-block-biggercontentslider__image32">
+            <strong>Image 3x2:</strong>
+            <slot name="image32"></slot>
+        </div>
+        <div class="sw-cms-block-biggercontentslider__image11">
+            <strong>Image 1x1:</strong>
+            <slot name="image11"></slot>
+        </div>
+    </div>
+{% endblock %}

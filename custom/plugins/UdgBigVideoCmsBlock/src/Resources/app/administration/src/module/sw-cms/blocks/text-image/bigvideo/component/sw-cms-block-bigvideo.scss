@@ -1,0 +1,21 @@
+.sw-cms-block-bigvideo {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    align-content: stretch;
+    align-items: start;
+    grid-gap: 40px;
+
+
+    .sw-cms-block-bigvideo__text {
+
+    }
+
+    .sw-cms-block-bigvideo__image11,
+    .sw-cms-block-bigvideo__image21 {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .sw-cms-block-bigvideo__video {
+
+    }
+}

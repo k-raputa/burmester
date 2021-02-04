@@ -1,0 +1,132 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/index.html.twig' %}
+
+{% block page_product_detail %}
+
+    {% set buyable = page.product.available and page.product.childCount <= 0 and page.product.calculatedMaxPurchase > 0 %}
+
+    <div class="product-detail"
+         itemscope
+         itemtype="https://schema.org/Product">
+
+        <!-- make whole component to vue app -->
+        <vue-app class="vue-app-pdp-header">
+            <template>
+
+                <!-- PDP header component will be rendered via vue. data-id has to match unique script#id with product data object -->
+                <vue-component-pdp-header data-id="product-data1" inline-template>
+
+                    <div class="component-pdp-header">
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-lg-3">
+
+                                    <h1 class="headline-product">
+                                        {% if page.product.parent %}
+                                            {{ page.product.parent.productNumber }}
+                                        {% else %}
+                                            {{ page.product.productNumber }}
+                                        {% endif %}
+                                    </h1>
+                                    <h3 class="text-product-name">
+                                        {{ page.product.translated.name }}
+                                    </h3>
+                                    <h3 class="text-product-subline">
+                                        {% for property in page.product.sortedProperties.elements %}
+                                            {% if property.displayType == 'text' and property.translated.name == '_productline_' %}
+                                                {{  property.options.elements|first.translated.name }}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </h3>
+
+                                    <p class="product-description-text">{{ page.product.translated.description }}</p>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    {% if page.product.media %}
+                                        <div class="slider">
+                                            {% for media in page.product.media.media %}
+                                                <div class="slider-item">
+                                                    {% sw_include '@UdgExtendedProductDetailPage/storefront/page/product-detail/element-image.html.twig' with {
+                                                        'media': media
+                                                    } %}
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="col-lg-3 product-actions">
+                                    {% sw_include '@UdgExtendedProductDetailPage/storefront/page/product-detail/teaser-gravur-personalize-overlay.html.twig' %}
+
+                                    {% block page_product_detail_configurator_include %}
+                                        {% if page.product.parentId and page.configuratorSettings|length > 0 %}
+                                            {% sw_include '@Storefront/storefront/page/product-detail/configurator.html.twig' %}
+                                        {% endif %}
+                                    {% endblock %}
+
+                                    {% block page_product_detail_buy_form %}
+                                        {% sw_include '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+                                    {% endblock %}
+
+                                    <div>
+                                        {% sw_include '@Storefront/storefront/page/product-detail/shopfinder.html.twig' %}
+
+                                        {% if buyable %}
+                                            {# BURASMLP-271, disable shop-buttons
+                                            <p class="info text-xs">
+                                                {{ include('@Storefront/storefront/component/delivery-information.html.twig')|striptags|trim }}
+
+                                                {% if context.taxState == "gross" %}
+                                                    {% set taxText = "general.grossTaxInformation"|trans|sw_sanitize %}
+                                                {% else %}
+                                                    {% set taxText = "general.netTaxInformation"|trans|sw_sanitize %}
+                                                {% endif %}
+
+                                                {% block page_product_detail_tax_link %}
+                                                    <br />
+                                                    <a class="product-detail-tax-link"
+                                                       href="{{ seoUrl('frontend.maintenance.singlepage',{ id: shopware.config.core.basicInformation.shippingPaymentInfoPage }) }}"
+                                                       title="{{ taxText }}"
+                                                       >
+                                                        {{ taxText }}
+                                                    </a>
+                                                {% endblock %}
+                                            </p>
+                                            #}
+                                        {% endif %}
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </vue-component-pdp-header>
+
+            </template>
+        </vue-app>
+
+        {%
+            set twigProduct = {
+            "title": page.product.translated.name,
+            "price": include('@UdgExtendedProductDetailPage/storefront/page/product-detail/price.html.twig')|trim,
+            "engravedText": null,
+            "engravedPrice": include('@UdgExtendedProductDetailPage/storefront/page/product-detail/customized-products/engravedPrice.html.twig', {value: option})|trim
+        }
+        %}
+
+        <script id="product-data1" type="application/json">
+          {{ twigProduct|json_encode()|raw }}
+        </script>
+
+    </div>
+
+    {# include some content blocks #}
+    {% if page.cmsPage %}
+        <div class="cms-page">
+            {% sw_include "@Storefront/storefront/page/content/detail.html.twig" with {'cmsPage': page.cmsPage} %}
+        </div>
+    {%  endif %}
+{% endblock %}

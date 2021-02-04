@@ -1,0 +1,70 @@
+<div class="header-mobile header-visibility-reference d-xl-none">
+    <div class="component-header-mobile"
+         data-plugin="headerMobile">
+        <div class="header-main">
+            <div class="container-fluid">
+                <div class="header-container">
+                    <div class="header-item">
+                        <a class="header-logo"
+                           href="{{ path('frontend.home.page') }}">
+                            <i class="icon header-logo-image">
+                                <svg class="svg-import">
+                                    <use xlink:href="#icon-logo"/>
+                                </svg>
+                            </i>
+                        </a>
+                    </div>
+                    <div class="header-item header-menu item-center">
+
+                        {# BURASMLP-271, disable shop-buttons
+                        <div class="component-header-shopping-cart">
+                            <a class="btn btn-menu btn-open-shopping-cart action-open-shopping-cart header-cart-btn header-actions-btn"
+                               href="{{ path('frontend.checkout.cart.page') }}"
+                               data-cart-widget="true"
+                               title="{{ 'checkout.cartTitle'|trans|striptags }}"
+                               aria-label="{{ 'checkout.cartTitle'|trans|striptags }}">
+                                {% sw_include '@Storefront/storefront/layout/header/actions/cart-widget.html.twig' %}
+                            </a>
+                        </div>
+                        #}
+
+                        <button type="button"
+                                class="btn btn-menu btn-open-search action-open-search search-toggle-btn js-search-toggle-btn">
+                            <i class="icon icon-magnifier">
+                                <svg class="svg-import">
+                                    <use xlink:href="#icon-magnifier"/>
+                                </svg>
+                            </i>
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-menu btn-open-navigation action-open-navigation">
+                            <i class="icon icon-burger">
+                                <svg class="svg-import">
+                                    <use xlink:href="#icon-burger"/>
+                                </svg>
+                            </i>
+                        </button>
+
+                        <button type="button"
+                                class="btn btn-menu btn-close-navigation action-close-navigation">
+                            <i class="icon icon-close">
+                                <svg class="svg-import">
+                                    <use xlink:href="#icon-close"/>
+                                </svg>
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-search">
+            {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/mobile/header-search.html.twig' %}
+        </div>
+
+        <div class="header-navigation">
+            {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/mobile/header-navigation.html.twig' %}
+        </div>
+    </div>
+</div>

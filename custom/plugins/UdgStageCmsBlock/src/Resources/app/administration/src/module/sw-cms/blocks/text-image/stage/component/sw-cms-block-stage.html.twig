@@ -1,0 +1,19 @@
+{% block sw_cms_block_stage %}
+    <div class="sw-cms-block-stage">
+        <div class="sw-cms-block-stage__left">
+            <slot name="text"></slot>
+        </div>
+        <div class="sw-cms-block-stage__video">
+            <strong>Video:</strong>
+            <slot name="video"></slot>
+        </div>
+        <div class="sw-cms-block-stage__image32">
+            <strong>Image 3x2:</strong>
+            <slot name="image32"></slot>
+        </div>
+        <div class="sw-cms-block-stage__image11">
+            <strong>Image 1x1:</strong>
+            <slot name="image11"></slot>
+        </div>
+    </div>
+{% endblock %}

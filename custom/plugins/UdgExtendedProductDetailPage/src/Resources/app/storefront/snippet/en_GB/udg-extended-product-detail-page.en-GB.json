@@ -1,0 +1,16 @@
+{
+    "UdgExtendedProductDetailPage": {
+        "configurator-gravur-personalize-overlay": {
+            "save": "Save",
+            "cancel": "Cancel",
+            "input": {
+                "placeholder": "Your initials (up to XX characters)"
+            }
+        },
+        "shopfinder": {
+            "link": {
+                "label": "Find a dealer"
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+{% block udg_storefinder_list %}
+    <sw-page class="udg-module-storefinder-list">
+        {% block udg_storefinder_list_search_bar %}
+            <template slot="search-bar">
+                <sw-search-bar initialSearchType="udg_storefinder"
+                               :initialSearch="term"
+                               :placeholder="$tc('udg.storefinder.module.page.list.searchBarPlaceholder')"
+                               @search="onSearch">
+                </sw-search-bar>
+            </template>
+        {% endblock %}
+
+        {% block udg_storefinder_list_smart_bar_header %}
+            <template slot="smart-bar-header">
+                {% block udg_storefinder_list_smart_bar_header_title %}
+                    <h2>
+                        {% block udg_storefinder_list_smart_bar_header_title_text %}
+                            {{ $tc('udg.storefinder.module.page.list.title') }}
+                        {% endblock %}
+
+                        {% block udg_storefinder_list_smart_bar_header_amount %}
+                            <span v-if="!isLoading && total" class="sw-page__smart-bar-amount">
+                                ({{ total }})
+                            </span>
+                        {% endblock %}
+                    </h2>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block udg_storefinder_list_actions %}
+            <template slot="smart-bar-actions">
+                {% block udg_storefinder_list_smart_bar_actions %}
+                    <sw-button :routerLink="{ name: 'udg.storefinder.create' }" variant="primary">
+                        {{ $tc('udg.storefinder.module.button.new') }}
+                    </sw-button>
+                {% endblock %}
+            </template>
+        {% endblock %}
+
+        {% block udg_storefinder_list_language_switch %}
+            <template slot="language-switch">
+                <sw-language-switch @on-change="onChangeLanguage"></sw-language-switch>
+            </template>
+        {% endblock %}
+
+        <template slot="content">
+            {% block udg_storefinder_list_content %}
+                <sw-entity-listing ref="listing"
+                                   v-if="entities"
+                                   :items="entities"
+                                   :repository="repository"
+                                   :showSelection="false"
+                                   :columns="columns"
+                                   :showSelection="true"
+                                   detailRoute="udg.storefinder.detail"
+                                   identifier="udg-storefinder-list">
+                </sw-entity-listing>
+            {% endblock %}
+
+            {% block udg_storefinder_list_grid_loader %}
+                <sw-loader v-if="isLoading"></sw-loader>
+            {% endblock %}
+
+            {% block udg_storefinder_list_empty_state %}
+                <sw-empty-state v-if="!isLoading && !total"
+                                :title="$tc('udg.storefinder.module.page.list.noData')"
+                                icon="default-documentation-file"
+                                :subline="$tc('udg.storefinder.module.page.list.noDataSubline')">
+                </sw-empty-state>
+            {% endblock %}
+        </template>
+    </sw-page>
+{% endblock %}

@@ -1,0 +1,14 @@
+.sw-cms-block-bigcontentslider {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: stretch;
+    align-items: start;
+    grid-gap: 40px;
+
+
+    .sw-cms-block-bigcontentslider__top,
+    .sw-cms-block-bigcontentslider__middle,
+    .sw-cms-block-bigcontentslider__bottom {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    }
+}

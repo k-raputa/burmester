@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-video-videolightbox-image-text-cms-block",
+    "description": "Video lightbox for a text-image-cms-block",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgVideoLightboxImageTextCmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgVideoLightboxImageTextCmsBlock",
+        "shopware-plugin-class": "UdgVideoLightboxImageTextCmsBlock\\UdgVideoLightboxImageTextCmsBlock",
+        "label": {
+            "de-DE": "VideoLightboxImageTextCMSBlock",
+            "en-GB": "VideoLightboxImageTextCMSBlock"
+        }
+    }
+}

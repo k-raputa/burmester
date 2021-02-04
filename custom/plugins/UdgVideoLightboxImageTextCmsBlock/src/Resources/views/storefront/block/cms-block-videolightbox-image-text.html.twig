@@ -1,0 +1,44 @@
+{% block sw_cms_block_videolightbox_image_text %}
+
+    {% set id = element.id %}
+    {% set video_lightbox = block.slots.getSlot('videolightbox') %}
+
+    {% set hasLightboxVideo = false %}
+    {% if video_lightbox.type == 'youtube-video' %}
+        {% set hasLightboxVideo = true %}
+    {% endif %}
+
+    {% block block_image_text_left %}
+        {% set element = block.slots.getSlot('left') %}
+        <div class="col-md-6" data-cms-element-id="{{ id }}">
+            {% if video_lightbox.type == 'youtube-video' %}
+                <div class="element-video" data-plugin="bigVideo">
+                    <div class="video-source lightbox"></div>
+                    <div class="play-button" data-video-id="{{ video_lightbox.config.videoID.value }}">
+                        <i class="icon ">
+                            <svg class="svg-import"><use xlink:href="#Icon-Videoplay" /></svg>
+                        </i>
+                    </div>
+            {% endif %}
+
+                    {% block block_image_text_left_inner %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    {% endblock %}
+
+            {% if video_lightbox.type == 'youtube-video' %}
+                </div>
+            {% endif %}
+        </div>
+    {% endblock %}
+
+    {% block block_image_text_right %}
+        {% set element = block.slots.getSlot('right') %}
+
+        <div class="col-md-6" data-cms-element-id="{{ id }}">
+            {% block block_image_text_right_inner %}
+                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+{% endblock %}
+

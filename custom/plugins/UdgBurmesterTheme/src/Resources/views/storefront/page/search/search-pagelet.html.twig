@@ -1,0 +1,16 @@
+{% set listingColumns = 'col-sm-6 col-lg-4' %}
+
+{% block element_product_listing_wrapper %}
+    <div class="cms-element-sidebar-filter">
+
+        {% sw_include '@UdgBusmesterTheme/storefront/component/product/listing.html.twig' with {
+            searchResult: page.listing,
+            dataUrl: url('widgets.search.pagelet.v2'),
+            filterUrl: '',
+            params: { search: page.searchTerm },
+            sidebar: 0,
+            boxLayout: 'minimal',
+            displayMode: ''
+        } %}
+    </div>
+{% endblock %}

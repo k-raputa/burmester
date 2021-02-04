@@ -1,0 +1,115 @@
+no;en_name;de_name
+1;Burmester Experience;Das Burmeister Erlebnis
+1.1;Philosophy;Philosophie
+1.2;Technology;Technologie
+1.3;Handmade in Germany;Handmade in Germany
+1.4;Milestones;Meilensteine
+1.5;Dieter Burmeister;Dieter Burmeister
+1.6;Social Engagement;Soziales Engagement
+2;Home Audio;Home Audio
+2.1;Product Lines;Produkt Linien
+2.1.1;Reference Line;Reference Line
+2.1.2;Signature Line;Signature Line
+2.1.3;Top Line;Top Line
+2.1.4;Classic Line;Classic Line
+2.1.5;Phase 3;Phase 3
+2.2;Systems;Systeme
+2.2.n;System “n”;System “n”
+2.3;Electronic Components;Electronic Komponents
+2.3.1;Preamplifier;Vorverstärker
+2.3.1.1;77;77
+2.3.1.2;808 MK5;808 MK5
+2.3.1.3;88;88
+2.3.1.4;100;100
+2.3.1.5;35;35
+2.3.1.6;99;99
+2.3.1.7;Preamplifier Content Entry Page;Vorverstärker Contenteinstieg
+2.3.1.7.n;Preamplifier Content Page “n”;Vorverstaerker Content “n”
+2.3.2;Power Amplifier;Endverstaerker
+2.3.2.1;909 MK5;909 MK5
+2.3.2.2;911 MK3;911 MK3
+2.3.2.3;956 MK2;956 MK2
+2.3.2.4;36;36
+2.3.2.5;159;159
+2.3.2.6;Power Amplifier Content Entry Page;Endverstaerker Content Einstieg
+2.3.2.6.n;Power Amplifier Content Page “n”;Endverstaerker Content “n”
+2.3.3;Integrated Amplifier;Vollverstaerker
+2.3.3.1;32;32
+2.3.3.2;82;32
+2.3.3.3;101;101
+2.3.3.4;Integrated Amplifier Content Entry Page;Vollverstaerker Content Einstieg
+2.3.3.4.n;Integrated Amplifier Content Page “n”;Vollverstaerker Content “n”
+2.3.4;Power Conditioner;Power Conditioner
+2.3.4.1;4948;4948
+2.3.4.2;Power Conditioner Content;Power Conditioner Content
+2.3.5;CD-Player;CD-Player
+2.3.5.1;69;69
+2.3.5.2;89;89
+2.3.5.3;61;61
+2.3.5.4;102;102
+2.3.5.5;CD-Player Content Entry Page;CD-Player Content Einstieg
+2.3.5.5.n;CD-Player Content Entry Page “n”;CD-Player Content “n”
+2.3.6;Turntable;Plattenspieler
+2.3.6.1;Turntable Content Entry Page;Plattenspieler Content Einstieg
+2.3.6.1.n;Turntable Content Page “n”;Plattenspieler Content “n”
+2.3.7;Network Products;Netzwerk-produkte
+2.3.7.1;111 Musiccenter;111 Musiccenter
+2.3.7.2;151 Musiccenter;151 Musiccenter
+2.3.7.3;150 Network Player;150 Network Player
+2.3.7.4;Loft Style;Loft Style
+2.3.7.5;Retro Style;Retro Style
+2.3.7.6;Network Products Content Entry Page;Netzwerk Content Einstieg
+2.3.7.6.n;Network Content Page “n”;Netzwerk Content “n”
+2.4;Loudspeaker;Lautsprecher
+2.4.1;B100;B100
+2.4.2;B80 MK2;B80 MK2
+2.4.3;BA71;BA71
+2.4.4;BA31;BA31
+2.4.5;961 MK3;961 MK3
+2.4.6;B18;B18
+2.4.7;B10;B10
+2.4.8;B28;B28
+2.4.9;B38;B38
+2.4.10;S8;S8
+2.4.11;BC350;BC350
+2.4.12;InWall Satellit und Center;InWall Satellit und Center
+2.4.13;InWall Woofer;InWall Woofer
+2.4.14;Lautsprecher Content Einstieg;Lautsprecher Content Einstieg
+2.4.14.n;Loudspeaker Content Page “n”;Lautsprecher Content “n”
+2.5;Accessories;Zubehör
+2.5.n;Accessory “n”;Zubehör “n”
+3;Mobile;Mobile
+3.1;Headphone 705;Kopfhörer 705
+3.1.1;Philosophy;Philosophie
+3.1.2;Technology;Technologie
+3.1.3;MLP;MLP
+4;Automotive;Automotive
+4.1;Overview;Übersicht
+4.2;Bugatti;Bugatti
+4.2.1;Bugatti Content Page;Bugatti Content
+4.3;Porsche;Porsche
+4.3.1;911;911
+4.3.2;718;718
+4.3.3;918 Spyder;918 Spyder
+4.3.4;Macan;Macan
+4.3.5;Panamera;Panamera
+4.3.6;Cayenne;Cayenne
+4.3.7;Porsche Content Page;Porsche Content
+4.4;Mercedes Benz;Mercedes Benz
+4.4.1;S-Klasse;S-Klasse
+4.4.2;C-Klasse;C-Klasse
+4.4.3;E-Klasse;E-Klasse
+4.4.4;GLC;GLC
+4.4.5;CLS;CLS
+4.4.6;A-Klasse;A-Klasse
+4.4.7;G-Klasse;G-Klasse
+4.4.8;V-Klasse;V-Klasse
+4.4.9;MB Content Page;MB Content
+4.5;Mercedes Maybach;Mercedes Maybach
+4.5.1;Maybach S-Klasse;Maybach S-Klasse
+4.5.2;Maybach Pullmann;Maybach Pullmann
+4.5.3;Maybach Content;Maybach Content
+4.6;Mercedes AMG;Mercedes AMG
+4.6.1;AMG GT;AMG GT
+4.6.2;AMG GT Coupe;AMG GT Coupe
+4.6.3;AMG Content;AMG Content

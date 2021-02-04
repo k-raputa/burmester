@@ -1,0 +1,50 @@
+{% sw_extends '@SwagCustomizedProducts/storefront/page/checkout/checkout-item.html.twig' %}
+
+{% block page_checkout_item_info_ordernumber %}
+    {% if mainLineItem.payload.productNumber %}
+        <div class="cart-item-ordernumber">
+            {{ "checkout.cartItemInfoId"|trans|sw_sanitize }} {{ mainLineItem.payload.productNumber }}
+        </div>
+    {% elseif lineItem.payload.productNumber %}
+        <div class="cart-item-ordernumber">
+            {{ "checkout.cartItemInfoId"|trans|sw_sanitize }} {{ lineItem.payload.productNumber }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block page_checkout_item_info %}
+    <div class="col-10 col-md-5 cart-item-info">
+        {{ block('page_checkout_item_info_inner') }}
+    </div>
+{% endblock %}
+
+{% block page_checkout_item_quantity %}
+    <div class="col-12 col-md-auto col-md-auto cart-item-quantity">
+        <div class="row cart-item-quantity-row">
+            {% block page_checkout_item_quantity_label %}
+                <div class="col-8 cart-item-quantity-label">
+                    {{ "checkout.cartHeaderQuantity"|trans|sw_sanitize }}
+                </div>
+            {% endblock %}
+
+            {% block page_checkout_item_quantity_select %}
+                <div class="col-4">
+                    {{ block('page_checkout_item_quantity_form') }}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block page_checkout_item_unit_price %}
+    <div class="col-12 col-md-2 cart-item-unit-price">
+        {{ block('page_checkout_item_unit_price_wrapper')}}
+    </div>
+{% endblock %}
+
+{% block page_checkout_item_total_price %}
+    <div class="col-12 col-md-2 cart-item-total-price">
+        {{ block('page_checkout_item_total_price_wrapper') }}
+    </div>
+{% endblock %}

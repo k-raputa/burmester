@@ -1,0 +1,50 @@
+{
+    "udg": {
+        "storefinder": {
+            "module": {
+                "general": {
+                    "label": "Google Maps Storefinder Module",
+                    "title": "Storefinder Module",
+                    "navigation": "Storefinder",
+                    "description": "Manage store locations"
+                },
+                "button": {
+                    "new": "New Locaction",
+                    "cancel": "Cancel",
+                    "save": "Save Locaction"
+                },
+                "page": {
+                    "list": {
+                        "title": "Storefinder locations",
+                        "noData": "No storefinder locations yet",
+                        "noDataSubline": "Manage storefinder locations here",
+                        "searchBarPlaceholder": "Find Storefinder locations..."
+                    },
+                    "detail": {
+                        "default": "Your location",
+                        "error": "Error :(",
+                        "card": {
+                            "address": "Address data",
+                            "contact": "Contact data",
+                            "technical": "Technical data"
+                        }
+                    }
+                },
+                "column": {
+                    "country": "Country",
+                    "latitude": "Latitude",
+                    "longitude": "Longitude",
+                    "distrotype": "Distributor type",
+                    "productline": "Product lines",
+                    "active": "Active",
+                    "company": "Company name",
+                    "street": "Street and number",
+                    "location": "Location",
+                    "phone": "Phone number",
+                    "email": "Email address",
+                    "web": "Homepage"
+                }
+            }
+        }
+    }
+}

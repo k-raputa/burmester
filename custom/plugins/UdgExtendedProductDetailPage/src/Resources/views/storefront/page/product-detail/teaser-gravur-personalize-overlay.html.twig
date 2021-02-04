@@ -1,0 +1,8 @@
+{% set customizedProductsTemplate = page.product.extensions.swagCustomizedProductsTemplate %}
+
+{% if customizedProductsTemplate and customizedProductsTemplate.active and customizedProductsTemplate.options|length %}
+    {% if customizedProductsTemplate.internalName == 'gravur' %}
+        <p class="text-xs chapter-default">{{ customizedProductsTemplate.translated.displayName }}</p>
+        <p class="text-sm">{{ customizedProductsTemplate.translated.description|raw }}</p>
+    {% endif %}
+{% endif %}

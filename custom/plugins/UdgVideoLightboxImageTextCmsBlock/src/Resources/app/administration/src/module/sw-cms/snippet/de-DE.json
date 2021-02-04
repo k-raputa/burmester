@@ -1,0 +1,12 @@
+{
+    "sw-cms": {
+        "blocks": {
+            "TextImageCMSBlock": {
+                "LightboxImageText": {
+                    "label": "Video-Lightbox Bild Text"
+                }
+            }
+        }
+    }
+}
+

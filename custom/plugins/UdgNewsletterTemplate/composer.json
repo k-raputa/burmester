@@ -1,0 +1,19 @@
+{
+    "name": "udg-shopware/udg-newsletter-template",
+    "description": "extends the newsletter template",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgNewsletterTemplate\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name": "UdgNewsletterTemplate",
+        "shopware-plugin-class": "UdgNewsletterTemplate\\UdgNewsletterTemplate",
+        "label": {
+            "de-DE": "Newsletter 2 go integration",
+            "en-GB": "Newsletter 2 go integration"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{% if value.relativeSurcharge %}
+    {% set productPrice = page.product.price.getCurrencyPrice(context.currency.id).gross %}
+
+    {% if context.getTaxState() != 'gross' %}
+        {% set productPrice = page.product.price.getCurrencyPrice(context.currency.id).net %}
+    {% endif %}
+
+    {% set valueSurcharge = (value.percentageSurcharge/100) * productPrice %}
+{% else %}
+    {% set valueSurcharge = value.price.getCurrencyPrice(context.currency.id).gross %}
+
+    {% if context.getTaxState() != 'gross' %}
+        {% set valueSurcharge = value.price.getCurrencyPrice(context.currency.id).net %}
+    {% endif %}
+{% endif %}
+
+{% set price = page.product.calculatedPrice %}
+
+{% if page.product.calculatedPrices|length == 1 %}
+    {% set price = page.product.calculatedPrices.first %}
+{% endif %}
+
+{% if valueSurcharge is not null and valueSurcharge != 0 %}
+    {{ (valueSurcharge+price.unitPrice)|currency }}
+{% endif %}

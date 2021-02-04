@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!-- Translations -->
+        <service id="UdgBurmesterTheme\Resources\app\storefront\snippet\de_DE\SnippetFile_de_DE">
+            <tag name="shopware.snippet.file"/>
+        </service>
+
+        <service id="UdgBurmesterTheme\Resources\app\storefront\snippet\en_GB\SnippetFile_en_GB">
+            <tag name="shopware.snippet.file"/>
+        </service>
+
+        <service id="Shopware\Core\Content\Product\Cms\ProductBoxCmsElementResolver" class="UdgBurmesterTheme\Core\Content\Product\Cms\ProductBoxCmsElementResolver">
+            <tag name="shopware.cms.data_resolver" />
+        </service>
+
+        <service id="Shopware\Core\Content\Product\SalesChannel\Search\ProductSearchGateway"
+                 class="UdgBurmesterTheme\Core\Content\Product\SalesChannel\Search\ProductSearchGateway">
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SearchKeyword\ProductSearchBuilderInterface"/>
+            <argument type="service" id="event_dispatcher"/>
+        </service>
+
+        <service id="Shopware\Core\Content\Seo\SeoUrlPlaceholderHandlerInterface"
+                 class="UdgBurmesterTheme\Core\Content\Seo\SeoUrlPlaceholderHandler" public="true">
+            <argument type="service" id="request_stack"/>
+            <argument type="service" id="router.default"/>
+            <argument type="service" id="sales_channel.seo_url.repository"/>
+
+            <call method="setCategoryRepo">
+                <argument type="service" id="category.repository"/>
+            </call>
+
+        </service>
+
+    </services>
+</container>

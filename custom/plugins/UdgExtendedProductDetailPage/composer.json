@@ -1,0 +1,21 @@
+{
+  "name": "udg-shopware/udg-extended-product-detail-page",
+  "description": "UdgExtendedProductDetailPage plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "UdgExtendedProductDetailPage\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "UdgExtendedProductDetailPage\\UdgExtendedProductDetailPage",
+    "label": {
+      "de-DE": "Extended product detail page",
+      "en-GB": "Extended product detail page"
+    }
+  },
+    "require": {
+        "udg-shopware/swag-customized-products": "*"
+    }
+}

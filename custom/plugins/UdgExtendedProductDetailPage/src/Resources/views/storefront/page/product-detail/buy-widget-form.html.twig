@@ -1,0 +1,134 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget-form.html.twig' %}
+
+{% set customizedProductsTemplate = page.product.extensions.swagCustomizedProductsTemplate %}
+
+{% block page_product_detail_buy_container %}
+    {% set customizedProductsOptionTemplatePrefix = '@SwagCustomizedProducts/storefront/component/customized-products/option-type/' %}
+
+    {% if customizedProductsTemplate and customizedProductsTemplate.active and customizedProductsTemplate.options|length %}
+        {% if customizedProductsTemplate.internalName == 'gravur' %}
+
+            {% for option in customizedProductsTemplate.options %}
+
+                {% if buyable %}
+                    {% sw_include '@UdgExtendedProductDetailPage/storefront/page/product-detail/configurator-gravur-personalize-overlay.html.twig' %}
+                {% endif %}
+
+                <!-- {{ option.translated.displayName }} -->
+                <input type="hidden"
+                       id="swag-customized-products-option-id-{{ option.id }}"
+                       name="{{ constant('Swag\\CustomizedProducts\\Storefront\\Controller\\CustomizedProductsCartController::CUSTOMIZED_PRODUCTS_TEMPLATE_REQUEST_PARAMETER') }}[options][{{ option.id }}][value]"
+                       class="form-control"
+                       placeholder="{{ props.placeholder }}"
+                       minlength="{{ props.minLength }}"
+                       maxlength="{{ props.maxLength }}"
+                       v-bind:value="engravedText"
+                    {{ option.required ? 'required' : '' }}>
+            {% endfor %}
+
+            <input type="hidden"
+                   name="{{ constant('Swag\\CustomizedProducts\\Storefront\\Controller\\CustomizedProductsCartController::CUSTOMIZED_PRODUCTS_TEMPLATE_REQUEST_PARAMETER') }}[id]"
+                   value="{{ customizedProductsTemplate.id }}">
+        {% else %}
+            <div class="swag-customized-products">
+                <div class="card swag-customized-products__card">
+                    <div
+                        class="swag-customized-products__title h4">{{ customizedProductsTemplate.translated.displayName }}</div>
+                    <input type="hidden"
+                           name="{{ constant('Swag\\CustomizedProducts\\Storefront\\Controller\\CustomizedProductsCartController::CUSTOMIZED_PRODUCTS_TEMPLATE_REQUEST_PARAMETER') }}[id]"
+                           value="{{ customizedProductsTemplate.id }}">
+
+                    {% block swag_customized_products_description %}
+                        {% block swag_customized_products_description_image %}
+                            {% if customizedProductsTemplate.media %}
+                                <div class="swag-customized-products__image">
+                                    <img src="{{ customizedProductsTemplate.media|sw_encode_media_url }}"
+                                         class="swag-customized-products__image img-fluid"
+                                         alt="{{ customizedProductsTemplate.translated.displayName }}"/>
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+
+                        {% block swag_customized_products_description_text %}
+                            {% if customizedProductsTemplate.description %}
+                                <div class="swag-customized-products__description">
+                                    {{ customizedProductsTemplate.description|raw }}
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    {% endblock %}
+
+                    {% for option in customizedProductsTemplate.options %}
+                        {# @var \Swag\CustomizedProducts\Template\Aggregate\TemplateOption\TemplateOptionEntity option #}
+                        {% set props = option.typeProperties %}
+                        {% set optionTemplateParent = customizedProductsOptionTemplatePrefix ~ 'option.html.twig' %}
+                        {% set fileName = customizedProductsOptionTemplatePrefix ~ option.type %}
+                        {% set optionTemplate = fileName ~ '.html.twig' %}
+
+                        {% block swag_customized_products_option_type_template %}
+                            {% if optionTemplate is not same as(null) %}
+                                {% sw_include optionTemplateParent ignore missing with {
+                                    'template': customizedProductsTemplate,
+                                    'option': option,
+                                    'optionTemplate': optionTemplate
+                                } %}
+                            {% endif %}
+                        {% endblock %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    <script id="product-data1" type="application/json">
+      {{ twigProduct|json_encode()|raw }}
+    </script>
+
+    {# disable customizedProductsTemplate for parent-template from swag-custumized-product #}
+    {% set customizedProductsTemplate = {} %}
+
+    {{ parent() }}
+{% endblock %}
+
+{% block page_product_detail_buy_quantity %}
+
+    <input name="lineItems[{{ product.id }}][quantity]"
+           class="custom-select product-detail-quantity-select"
+           type="hidden"
+           value="1"/>
+{% endblock %}
+
+{% block page_product_detail_buy_button_container %}
+    <div class="col-12">
+        <div class="buy-product">
+            <p v-if="engravedText && engravedPrice" class="price h2">{{"{{engravedPrice}}"}}</p>
+            <p v-else-if="price" class="price h2">{{"{{price}}"}}</p>
+            {% block page_product_detail_buy_button %}
+                {# BURASMLP-271, disable shop-buttons
+                <button class="btn btn-primary btn-lg add-to-cart"
+                        title="{{ "detail.addProduct"|trans|striptags }}"
+                        aria-label="{{ "detail.addProduct"|trans|striptags }}">
+                    {{ "detail.addProduct"|trans|sw_sanitize }}
+                </button>
+                #}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block page_product_detail_buy_form_action %}{% apply spaceless %}
+    {% if customizedProductsTemplate and customizedProductsTemplate.active %}
+        {{ path('frontend.checkout.customized-products.add') }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endapply %}
+{% endblock %}
+
+{% block page_product_detail_buy_form_inner_csrf %}
+    {% if customizedProductsTemplate and customizedProductsTemplate.active %}
+        {{ sw_csrf('frontend.checkout.customized-products.add') }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

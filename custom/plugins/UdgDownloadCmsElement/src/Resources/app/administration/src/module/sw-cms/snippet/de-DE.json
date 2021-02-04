@@ -1,0 +1,14 @@
+{
+    "sw-cms": {
+        "elements": {
+            "udgDownload": {
+                "label": "Downloads",
+                "config": {
+                    "label": {
+                        "media": "Datei"
+                    }
+                }
+            }
+        }
+    }
+}

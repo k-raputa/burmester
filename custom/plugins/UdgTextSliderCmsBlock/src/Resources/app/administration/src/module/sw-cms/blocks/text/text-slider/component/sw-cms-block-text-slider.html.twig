@@ -1,0 +1,19 @@
+{% block sw_cms_block_text_slider %}
+
+    <div class="sw-cms-block-text-slider">
+        <div class="sw-cms-block-text-slider-header">Slider-Element</div>
+        <div class="sw-cms-block-text-slider-content">
+            <slot name="slide1">{% block sw_cms_block_text_slider_slot_slide1 %}{% endblock %}</slot>
+        </div>
+
+        <div class="sw-cms-block-text-slider-header">Slider-Element</div>
+        <div class="sw-cms-block-text-slider-content">
+            <slot name="slide2">{% block sw_cms_block_text_slider_slot_slide2 %}{% endblock %}</slot>
+        </div>
+
+        <div class="sw-cms-block-text-slider-header">Slider-Element</div>
+        <div class="sw-cms-block-text-slider-content">
+            <slot name="slide3">{% block sw_cms_block_text_slider_slot_slide3 %}{% endblock %}</slot>
+        </div>
+    </div>
+{% endblock %}

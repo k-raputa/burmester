@@ -1,0 +1,17 @@
+{
+    "UdgBurmesterTheme": {
+        "teaser-storefinder": {
+            "link": {
+                "label": "Find a dealer"
+            }
+        },
+        "header": {
+            "search": {
+                "cancel": "Cancel"
+            },
+            "account": {
+                "login": "Login or Register"
+            }
+        }
+    }
+}

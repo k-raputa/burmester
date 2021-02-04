@@ -1,0 +1,54 @@
+{% block sw_cms_block_stage %}
+    {% set id = element.id %}
+    {% set video = block.slots.getSlot('video') %}
+
+    <div class="component-stage">
+        {% block block_stage_text %}
+            {% set element = block.slots.getSlot('text') %}
+
+            {%  if 'theme-' in block.cssClass %}
+                {% set themeStyle = '' %}
+            {% else %}
+                {% set themeStyle = 'theme-white' %}
+            {% endif %}
+
+            <div class="stage-text-wrapper video">
+                <div class="{{ themeStyle }} d-none d-md-block">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+                <div class="{{ themeStyle }} d-md-none">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+            </div>
+        {% endblock %}
+
+        <div class="stage-background-wrapper">
+            {% if video.type == 'youtube-video' %}
+                <div class="element-video" data-plugin="bigVideo">
+                    <div class="video-source  lightbox"></div>
+                    <div class="play-button"  data-video-id="{{ video.config.videoID.value }}">
+                        <i class="icon ">
+                            <svg class="svg-import"><use xlink:href="#Icon-Videoplay" /></svg>
+                        </i>
+                    </div>
+            {% endif %}
+                <div class="image-3x2">
+                    {% block block_stage_image32 %}
+                        {% set element = block.slots.getSlot('image32') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    {% endblock %}
+
+                </div>
+                <div class="image-1x1">
+                    {% block block_stage_image11 %}
+                        {% set element = block.slots.getSlot('image11') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    {% endblock %}
+                </div>
+            {% if video.type == 'youtube-video' %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

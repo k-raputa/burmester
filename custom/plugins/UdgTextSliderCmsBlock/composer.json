@@ -1,0 +1,32 @@
+{
+    "name": "udg-shopware/udg-text-slider-cms-block",
+    "description": "Text slider as block for the CMS",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "UDG"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "UdgTextSliderCmsBlock\\UdgTextSliderCmsBlock",
+        "label": {
+            "de-DE": "UdgTextSliderCmsBlock",
+            "en-GB": "UdgTextSliderCmsBlock"
+        },
+        "description": {
+            "de-DE": "Erstellt einen CMS-Block für einen Text-Slider",
+            "en-GB": "Creates CMS-Block for text slider"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UdgTextSliderCmsBlock\\": "src/"
+        }
+    }
+}

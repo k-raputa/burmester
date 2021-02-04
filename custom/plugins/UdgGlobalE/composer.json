@@ -1,0 +1,20 @@
+{
+    "name": "udg/udg-global-e",
+    "description": "Global-e integration",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgGlobalE\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgGlobalE",
+        "shopware-plugin-class": "UdgGlobalE\\UdgGlobalE",
+        "label": {
+            "de-DE": "UdgGlobalE",
+            "en-GB": "UdgGlobalE"
+        }
+    }
+}
+

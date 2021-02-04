@@ -1,0 +1,11 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{% block page_checkout_cart_action_proceed %}
+    <div class="checkout-aside-action">
+        <a href="{{ path('frontend.checkout.global-e.page') }}"
+           class="btn btn-primary btn-block btn-lg"
+           title="{{ "checkout.proceedLink"|trans|striptags }}">
+            {{ "checkout.proceedLink"|trans|sw_sanitize }}
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{
+    "name": "udg-shopware/udg-accordeon-cms-block",
+    "description": "Accordeon",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "UDG"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "UdgAccordeonCmsBlock\\UdgAccordeonCmsBlock",
+        "label": {
+            "de-DE": "Accordeon",
+            "en-GB": "Accordeon"
+        },
+        "description": {
+            "de-DE": "Erstellt einen CMS-Block für einen Accordeon",
+            "en-GB": "Creates CMS-Block for accordeon"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UdgAccordeonCmsBlock\\": "src/"
+        }
+    }
+}

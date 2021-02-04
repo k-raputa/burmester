@@ -1,0 +1,24 @@
+{% block sw_cms_block_bigcontentslider %}
+
+    {% block block_bigcontentslider_top %}
+        <div class="offset-md-2 col-md-8">
+            {% set element = block.slots.getSlot('top') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    {% endblock %}
+
+    {% block block_bigcontentslider_middle %}
+        <div class="offset-md-3 col-md-6">
+            {% set element = block.slots.getSlot('middle') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    {% endblock %}
+
+    {% block block_bigcontentslider_bottom %}
+        <div class="offset-md-3 col-md-6">
+            {% set element = block.slots.getSlot('bottom') %}
+            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+        </div>
+    {% endblock %}
+{% endblock %}
+

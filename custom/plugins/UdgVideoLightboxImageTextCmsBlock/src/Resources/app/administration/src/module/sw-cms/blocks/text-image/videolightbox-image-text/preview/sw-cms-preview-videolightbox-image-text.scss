@@ -1,0 +1,29 @@
+.sw-cms-preview-videolightbox-image-text {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    padding: 15px;
+    align-content: stretch;
+    align-items: start;
+
+
+    .sw-cms-preview-videolightbox-image-text__image {
+        height: 100px !important;
+    }
+
+    .sw-cms-preview-videolightbox-image-text__left,
+    .sw-cms-preview-videolightbox-image-text__right {
+        box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+        display: block;
+        object-fit: cover !important;
+        width: 100%;
+        height: 100%;
+    }
+
+}
+
+

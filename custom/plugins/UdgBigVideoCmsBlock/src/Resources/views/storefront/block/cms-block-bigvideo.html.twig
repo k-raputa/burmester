@@ -1,0 +1,86 @@
+{% block sw_cms_block_bigvideo %}
+
+
+    {% set id = element.id %}
+    {% set video_lightbox = block.slots.getSlot('videolightbox') %}
+    {% set video_desktop = block.slots.getSlot('videodesktop') %}
+    {% set video_mobile = block.slots.getSlot('videomobile') %}
+
+    {% set hasLightboxVideo = false %}
+    {% if video_lightbox.type == 'youtube-video' %}
+        {% set hasLightboxVideo = true %}
+    {% endif %}
+
+    {% set previewLoop = false %}
+    {% set videoCodeDesktop = '' %}
+    {% set videoCodeMobile = '' %}
+    {% if video_desktop.type == 'youtube-video' %}
+        {% set videoCodeDesktop = video_desktop.config.videoID.value %}
+        {% set videoCodeMobile = video_desktop.config.videoID.value %}
+        {% set previewLoop = video_desktop.config.loop.value %}
+    {% endif %}
+    {% if video_mobile.type == 'youtube-video' %}
+        {% set videoCodeMobile = video_mobile.config.videoID.value %}
+    {% endif %}
+
+    <div class="component-big-video">
+        <div class="big-video-content">
+            <div class="element-video" data-plugin="bigVideo">
+                <div class="video-source
+                    {% if videoCodeDesktop %} big-video{% endif %}
+                    {% if previewLoop %} preview-loop{% endif %}
+                    {% if hasLightboxVideo %} lightbox{% endif %}"
+
+                    {% if videoCodeDesktop %}
+                        {% if previewLoop %}
+                            data-preview-desktop="{{ videoCodeDesktop }}"
+                            data-preview-mobile="{{ videoCodeMobile }}"
+                            data-plyr-provider="youtube"
+                        {% else %}
+                            data-video-desktop="{{ videoCodeDesktop }}"
+                            data-video-mobile="{{ videoCodeMobile }}"
+                            data-plyr-provider="youtube"
+                        {% endif %}
+                    {% endif %}
+                ></div>
+                <div class="play-button"
+                     {% if hasLightboxVideo %}data-video-id="{{ video_lightbox.config.videoID.value }}"{% endif %}>
+                    <i class="icon ">
+                        <svg class="svg-import">
+                            <use xlink:href="#Icon-Videoplay"/>
+                        </svg>
+                    </i>
+                </div>
+                {% block block_bigvideo_image21 %}
+                    {% set element = block.slots.getSlot('image21') %}
+                    {% if element.type == 'image' %}
+                        <div class="image-2x1">
+                            <div class="cms-element-image">
+                                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block block_bigvideo_image11 %}
+                    {% set element = block.slots.getSlot('image11') %}
+                    {% if element.type == 'image' %}
+                        <div class="image-1x1">
+                            <div class="cms-element-image">
+                                {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+
+            {% block block_bigvideo_text %}
+                {% set element = block.slots.getSlot('text') %}
+                <div class="big-video-overlay">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %}

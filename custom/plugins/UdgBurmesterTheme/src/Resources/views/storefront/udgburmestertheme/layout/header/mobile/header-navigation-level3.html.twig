@@ -1,0 +1,37 @@
+<div class="navigation-layer nav-id-{{ navigationTree.category.id }}">
+    <div class="container-fluid">
+        <nav class="navbar"
+             itemscope
+             itemtype="http://schema.org/SiteNavigationElement">
+            <div class="navigation-layer-back-container">
+                <button
+                    class="btn btn-link btn-lg btn-mobile-navigation btn-navigation-back active action-nav-item"
+                    data-navigation-layer-reference="nav-id-{{ parentCategoryId }}">
+                    <i class="icon icon-chevron-left"><svg class="svg-import"><use xlink:href="#icon-chevron-left-thin"></use></svg></i>
+                    {{ navigationTree.category.translated.name }}
+                </button>
+            </div>
+            <ul class="navbar-nav">
+                {% for treeItem in navigationTree.children %}
+                    {% set id = treeItem.category.id %}
+                    {% set name = treeItem.category.translated.name %}
+                    {% set link = treeItem.category.externalLink %}
+                    {% set active = '|'~id~'|' in activePath ? true : false %}
+
+                    <li class="nav-item nav-item-indicator{% if active %} active{% endif %}"
+                        itemprop="name">
+
+                        <a class="btn btn-link btn-lg btn-mobile-navigation btn-navigation-light"
+                           href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}"
+                           itemprop="url">
+
+                            <div class="anchor anchor-default">
+                                {{ name }}
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+</div>

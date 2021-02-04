@@ -1,0 +1,79 @@
+{% sw_extends '@Storefront/storefront/component/product/card/box-standard.html.twig' %}
+{% block component_product_box %}
+    {% if product %}
+        {% set name = product.translated.name %}
+        {% set id = product.id %}
+        {% set cover = product.cover.media %}
+        {% set layout = 'standard' %}
+
+        <div class="card product-box card-col box-{{ layout }}">
+            {% block component_product_box_content %}
+            <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+               title="{{ name }}"
+               class="card-body">
+
+                {% block component_product_box_badges %}{% endblock %}
+
+                {% block component_product_box_rich_snippets %}
+                    {% sw_include '@Storefront/storefront/component/product/card/meta.html.twig' %}
+                {% endblock %}
+
+                <p class="text-product-name text-sm">
+                    {{ name }}
+                </p>
+
+                <p class="text-product-subline text-sm">
+                    {% for property in product.properties.elements %}
+                        {% if property.group.displayType == 'text' and property.group.translated.name == '_productline_' %}
+                            {{  property.translated.name }}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+                <p class="headline-product-secondary">{{ product.productNumber }}</p>
+
+                {% block component_product_box_image %}
+                    <div class="product-image-wrapper">
+                        {% set displayMode = 'standard' %}
+
+                        <div class="cms-image-container element-image ">
+                            {% if cover.url %}
+                                {% sw_thumbnails 'product-image-thumbnails' with {
+                                    media: cover,
+                                    attributes: {
+                                        'class': 'product-image is-'~displayMode,
+                                        'alt': (cover.translated.alt ?: name),
+                                        'title': (cover.translated.title ?: name)
+                                    }
+                                } %}
+                            {% else %}
+                                {#
+                                <div class="product-image-placeholder">
+                                    {% sw_icon 'placeholder' style {
+                                        'size': 'fluid'
+                                    } %}
+                                </div>
+                                #}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endblock %}
+
+                {% block component_product_box_info %}
+                    {% block component_product_box_rating %}{% endblock %}
+
+                    {% block component_product_box_description %}
+                        <div class="product-description text-md">
+                            {{ product.translated.description|striptags }}
+                        </div>
+                    {% endblock %}
+
+                    {% block component_product_box_price %}{% endblock %}
+
+                    {% block component_product_box_action %}{% endblock %}
+                {% endblock %}
+            </a>
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
+

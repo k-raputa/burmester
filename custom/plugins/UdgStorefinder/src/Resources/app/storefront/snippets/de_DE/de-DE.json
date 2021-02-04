@@ -1,0 +1,33 @@
+{
+    "sw-cms": {
+        "elements": {
+            "udg": {
+                "storefinder": {
+                    "template": {
+                        "title": {
+                            "headline": "Distributoren und Händler",
+                            "map": "Store Finder",
+                            "locations": "Standorte"
+                        },
+                        "searchPlaceholder": "Händler und Standorte suchen",
+                        "distributor": "Distributor",
+                        "merchant": "Händler",
+                        "form": {
+                            "option": {
+                                "location": "Ort/Region/Land",
+                                "name": "Name"
+                            },
+                            "button": "Suchen"
+                        },
+                        "labels": {
+                            "calculateRoute": "Route berechnen",
+                            "findOnMap": "Auf Karte Finden",
+                            "merchant": "Händler",
+                            "distributor": "Distributor"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

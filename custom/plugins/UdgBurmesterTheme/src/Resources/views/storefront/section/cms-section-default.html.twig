@@ -1,0 +1,22 @@
+{% sw_extends '@Storefront/storefront/section/cms-section-default.html.twig' %}
+
+{% block page_content_section_default %}
+    {% set layout = section.sizingMode ? section.sizingMode|replace({"_": "-"}) : "container" %}
+
+    {% set data_plugin = '' %}
+    {% for block in section.blocks %}
+        {% if block.type == 'bigcontentslider' %}
+            {% set data_plugin = 'data-plugin="bigContentSlider"' %}
+        {% endif %}
+    {% endfor %}
+
+    <div class="cms-section-default {{ layout }}"
+        {{ data_plugin|raw }}
+    >
+        <div class="custom-row">
+            {% for block in section.blocks %}
+                {{ block("section_default_content_block") }}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

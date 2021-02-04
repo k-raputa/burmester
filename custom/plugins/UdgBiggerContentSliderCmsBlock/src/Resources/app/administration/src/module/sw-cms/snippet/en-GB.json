@@ -1,0 +1,12 @@
+{
+    "sw-cms": {
+        "blocks": {
+            "TextImageCMSBlock": {
+                "BiggerContentSlider": {
+                    "label": "BiggerContentSlider Block"
+                }
+            }
+        }
+    }
+}
+

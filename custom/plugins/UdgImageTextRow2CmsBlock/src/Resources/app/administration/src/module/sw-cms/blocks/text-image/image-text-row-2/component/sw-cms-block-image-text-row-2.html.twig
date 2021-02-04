@@ -1,0 +1,13 @@
+{% block sw_cms_block_image_text_row %}
+    <div class="sw-cms-block-image-text-row-2">
+        <div class="sw-cms-block-image-text-row-2__left">
+            <slot name="left-image"></slot>
+            <slot name="left-text"></slot>
+        </div>
+
+        <div class="sw-cms-block-image-text-row-2__right">
+            <slot name="right-image"></slot>
+            <slot name="right-text"></slot>
+        </div>
+    </div>
+{% endblock %}

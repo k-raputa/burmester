@@ -1,0 +1,14 @@
+.sw-cms-el-storefinder {
+    display: block;
+
+    .sw-cms-el-storefinder-map {
+        height: 400px;
+
+        img {
+            display: block;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

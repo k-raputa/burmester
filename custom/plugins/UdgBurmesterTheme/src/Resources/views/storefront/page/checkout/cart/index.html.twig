@@ -1,0 +1,27 @@
+{% sw_extends '@Storefront/storefront/page/checkout/cart/index.html.twig' %}
+
+{% block base_body_classes %}is-ctl-{{ controllerName|lower }} is-act-{{ controllerAction|lower }} theme-default cart-theme {% endblock %}
+
+{% block base_content %}
+<div class="cms-page">
+    <div class="cms-sections">
+        {{ block('page_checkout') }}
+    </div>
+</div>
+{% endblock %}
+
+{% block page_checkout_cart_add_product %}{% endblock %}
+
+{% block page_checkout_cart_add_promotion %}{% endblock %}
+
+{% block page_checkout_cart_shipping_costs_trigger %}
+    <a class="anchor anchor-secondary cart-shipping-costs-btn"
+        data-toggle="modal"
+        data-url="{{ path('frontend.cms.page', { id: shopware.config.core.basicInformation.shippingPaymentInfoPage }) }}"
+        href="{{ seoUrl('frontend.maintenance.singlepage',{ id: shopware.config.core.basicInformation.shippingPaymentInfoPage }) }}">
+        {{ "checkout.shippingCosts"|trans|sw_sanitize }}
+        {% block page_checkout_cart_shipping_costs_trigger_icon %}
+            {% sw_icon 'arrow-medium-right' style { 'pack':'solid', 'size': 'sm' } %}
+        {% endblock %}
+    </a>
+{% endblock %}

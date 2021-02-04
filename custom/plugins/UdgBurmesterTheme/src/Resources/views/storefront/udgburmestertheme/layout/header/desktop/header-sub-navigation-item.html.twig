@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand nav-id-{{ navigationTree.category.id }}"
+     itemscope
+     itemtype="http://schema.org/SiteNavigationElement">
+
+    <ul class="navbar-nav">
+
+        {% for treeItem in navigationTree.children %}
+
+            {% set id = treeItem.category.id %}
+            {% set name = treeItem.category.translated.name %}
+            {% set link = treeItem.category.externalLink %}
+            {% set active = '|'~id~'|' in activePath ? true : false %}
+            {% set childrenCount = treeItem.children|length %}
+
+            <li class="nav-item nav-item-indicator{% if active %} active{% endif %}"
+                itemprop="name">
+                {% if treeItem.category.type == 'folder' %}
+                    <div class="anchor anchor-default"
+                         title="{{ name }}">
+                        {{ name }}
+                    </div>
+                {% else %}
+                    <a class="anchor anchor-default {% if childrenCount %} anchor-icon action-nav-item{% endif %}"
+                       href="{% if link %}{{ link }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}"
+                       {% if childrenCount %}data-navigation-layer-reference="nav-id-{{ id }}"{% endif %}
+                       itemprop="url"
+                       title="{{ name }}">
+                        {{ name }}
+                        {% if childrenCount %}
+                            <i class="icon ">
+                                <svg class="svg-import">
+                                    <use xlink:href="#icon-chevron-down"/>
+                                </svg>
+                            </i>
+                        {% endif %}
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+
+

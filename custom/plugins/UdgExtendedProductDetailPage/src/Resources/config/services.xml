@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="Shopware\Storefront\Page\Product\ProductPageLoader" class="UdgExtendedProductDetailPage\Storefront\Page\Product\ProductPageLoader">
+            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
+            <argument type="service" id="sales_channel.product.repository"/>
+            <argument type="service" id="event_dispatcher"/>
+            <argument type="service" id="Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageRepository"/>
+            <argument type="service" id="Shopware\Core\Content\Cms\DataResolver\CmsSlotsDataResolver"/>
+            <argument type="service" id="Shopware\Storefront\Page\Product\Configurator\ProductPageConfiguratorLoader"/>
+            <argument type="service" id="Shopware\Core\Content\Product\SalesChannel\SalesChannelProductDefinition"/>
+            <argument type="service" id="Shopware\Storefront\Page\Product\ProductLoader"/>
+            <argument type="service" id="Shopware\Storefront\Page\Product\Review\ProductReviewLoader"/>
+            <argument type="service" id="Shopware\Storefront\Page\Product\CrossSelling\CrossSellingLoader"/>
+            <argument type="service" id="cms_page.repository"/>
+        </service>
+
+        <!-- Translations -->
+        <service id="UdgExtendedProductDetailPage\Resources\app\storefront\snippet\de_DE\SnippetFile_de_DE">
+            <tag name="shopware.snippet.file"/>
+        </service>
+
+        <service id="UdgExtendedProductDetailPage\Resources\app\storefront\snippet\en_GB\SnippetFile_en_GB">
+            <tag name="shopware.snippet.file"/>
+        </service>
+
+        <!-- BugFix.... -->
+        <service id="Shopware\Core\Content\Cms\SalesChannel\SalesChannelCmsPageRepository" class="UdgExtendedProductDetailPage\Core\Content\Cms\SalesChannel\SalesChannelCmsPageRepository" public="true">
+            <argument type="service" id="cms_page.repository" />
+        </service>
+    </services>
+</container>

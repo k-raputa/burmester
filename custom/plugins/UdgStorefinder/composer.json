@@ -1,0 +1,27 @@
+{
+    "name": "udg-shopware/udg-storefinder",
+    "description": "Google Maps based store finder",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "UDG"
+        }
+    ],
+    "extra": {
+        "shopware-plugin-class": "UdgStorefinder\\UdgStorefinder",
+        "label": {
+            "de-DE": "Udg Storefinder",
+            "en-GB": "Udg Storefinder"
+        },
+        "description": {
+            "de-DE": "Auf Google Maps basierender Storefinder",
+            "en-GB": "Google Maps based store finder"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UdgStorefinder\\": "src/"
+        }
+    }
+}

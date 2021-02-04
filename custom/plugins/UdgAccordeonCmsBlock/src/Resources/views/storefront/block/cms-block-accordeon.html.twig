@@ -1,0 +1,30 @@
+{% block block_accordeon %}
+
+    {% set elementCount = 8 %}
+
+    <div class="component-accordion" data-plugin="accordion">
+    <div class="accordion">
+        {% for i in 1..elementCount %}
+            {% set element = block.slots.getSlot('slide' ~ i) %}
+
+            {% block block_accordeon_inner %}
+                {% set ContentHeader = element.getFieldConfig().get('header').getValue() %}
+
+                {% if element.type == 'accordeon' and ContentHeader != '' %}
+                    <div class="accordion-element">
+                        <div class="accordion-head h2">
+                            {{ ContentHeader }}
+                            <div class="icon"></div>
+                        </div>
+                        <div class="accordion-content-wrapper">
+                            <div class="accordion-content">
+                                {{ element.getFieldConfig().get('content').getValue()|raw }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endblock %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

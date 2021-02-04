@@ -1,0 +1,18 @@
+$color-gray-50: #F9FAFB;
+$color-gray-900: #758CA3;
+
+.sw-cms-block-accordeon {
+    display: grid;
+    grid-template-columns: repeat(auto-fit);
+    grid-gap: 40px;
+}
+
+.sw-cms-block-accordeon-header {
+    background: $color-gray-50;
+    color: $color-gray-900;
+}
+
+.sw-cms-block-accordeon-content {
+    text-align: center;
+}
+

@@ -1,0 +1,13 @@
+.sw-cms-block-storefinderteaser {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: stretch;
+    align-items: start;
+    grid-gap: 40px;
+
+
+    .sw-cms-block-storefinderteaser__top,
+    .sw-cms-block-storefinderteaser__bottom {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-bigcontentslider-cms-block",
+    "description": "BigContentSlider-CMS-Block",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgBigContentSliderCmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgBigContentSliderCmsBlock",
+        "shopware-plugin-class": "UdgBigContentSliderCmsBlock\\UdgBigContentSliderCmsBlock",
+        "label": {
+            "de-DE": "BigContentSlider-CMS-Block",
+            "en-GB": "BigContentSlider-CMS-Block"
+        }
+    }
+}

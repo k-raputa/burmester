@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-stage-cms-block",
+    "description": "Stage-CMS-Block",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgStageCmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgStageCmsBlock",
+        "shopware-plugin-class": "UdgStageCmsBlock\\UdgStageCmsBlock",
+        "label": {
+            "de-DE": "Stage-CMS-Block",
+            "en-GB": "Stage-CMS-Block"
+        }
+    }
+}

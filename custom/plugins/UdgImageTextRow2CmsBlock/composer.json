@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-image-text-row-2-cms-block",
+    "description": "Two columns, captioned images",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgImageTextRow2CmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgImageTextRow2CmsBlock",
+        "shopware-plugin-class": "UdgImageTextRow2CmsBlock\\UdgImageTextRow2CmsBlock",
+        "label": {
+            "de-DE": "Two columns, captioned images",
+            "en-GB": "Two columns, captioned images"
+        }
+    }
+}

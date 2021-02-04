@@ -1,0 +1,51 @@
+<div class="personalize">
+    <p class="text-xs engraved">
+        <span class="chapter-default">{{ option.translated.displayName|raw }}</span>
+        {{"{{engravedText}}"}}
+    </p>
+    <p class="text-sm">
+        <a data-mfp-src="#personalization-popup1"
+           class="anchor anchor-secondary open-personalization">{{ customizedProductsTemplate.translated.displayName|raw }}</a>
+    </p>
+
+    <!-- Personalization lightbox for PDP Header -->
+    <div id="personalization-popup1" class="personalization-popup container-fluid mfp-hide">
+        <div class="row align-items-center">
+
+            <div class="col-md-6">
+                {% if customizedProductsTemplate.media %}
+                    {% sw_include '@UdgExtendedProductDetailPage/storefront/page/product-detail/element-image.html.twig' with {
+                        'media': customizedProductsTemplate.media,
+                        'alt': customizedProductsTemplate.translated.displayName
+                    } %}
+                {% endif %}
+            </div>
+
+            <div class="col-md-3 offset-md-1">
+                <p class="text-xs chapter-default">{{ option.translated.displayName|raw }}</p>
+
+                <form>
+                    <label for="engraved-text">{{ "UdgExtendedProductDetailPage.configurator-gravur-personalize-overlay.input.placeholder"|trans }}</label>
+                    <input id="engraved-text"
+                           name="engraved-text"
+                           class="form-control text-sm"
+                           type="text"
+                           placeholder="{{ "UdgExtendedProductDetailPage.configurator-gravur-personalize-overlay.input.placeholder"|trans }}"
+                           maxlength="20"
+                           v-bind:value="engravedText"
+                           v-model="engravedUserInput" />
+
+                    <p class="info text-xs">{{ option.translated.description|raw }}</p>
+
+                    <!-- button styles from existing buttons used -->
+                    <button type="submit"
+                            class="btn btn-primary btn-large"
+                            v-on:click="savePersonalization">{{ "UdgExtendedProductDetailPage.configurator-gravur-personalize-overlay.save"|trans }}</button>
+                    <button type="button"
+                            class="btn anchor anchor-secondary"
+                            v-on:click="resetPersonalization">{{ "UdgExtendedProductDetailPage.configurator-gravur-personalize-overlay.cancel"|trans }}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

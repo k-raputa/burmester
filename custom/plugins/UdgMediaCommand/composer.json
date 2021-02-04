@@ -1,0 +1,27 @@
+{
+    "name": "udg-shopware/udg-media-command",
+    "description": "Text slider as block for the CMS",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "UDG"
+        }
+    ],
+    "extra": {
+        "shopware-plugin-class": "UdgMediaCommand\\UdgMediaCommand",
+        "label": {
+            "de-DE": "UdgMediaCommand",
+            "en-GB": "UdgMediaCommand"
+        },
+        "description": {
+            "de-DE": "Commands for media handling",
+            "en-GB": "Commands for media handling"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UdgMediaCommand\\": "src/"
+        }
+    }
+}

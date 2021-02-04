@@ -1,0 +1,18 @@
+{% if media.url %}
+    <div class="element-image">
+
+        {% set attributes = {
+            'class': '',
+            'alt': (alt ?: ''),
+            'title': (alt ?: '')
+        } %}
+
+        {% sw_thumbnails 'cms-image-thumbnails' with {
+            media: media
+        } %}
+
+        <div class="image-title">
+            {{ (alt ?: '') }}
+        </div>
+    </div>
+{% endif %}

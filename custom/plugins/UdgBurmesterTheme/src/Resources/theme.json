@@ -1,0 +1,22 @@
+{
+  "name": "UdgBurmesterTheme",
+  "author": "United Digital Group",
+  "views": [
+     "@Storefront",
+     "@Plugins",
+     "@UdgExtendedProductDetailPage",
+     "@UdgBurmesterTheme"
+  ],
+  "style": [
+    "@Storefront",
+    "app/storefront/dist/storefront/css/style.min.scss"
+  ],
+  "script": [
+    "@Storefront",
+    "app/storefront/dist/storefront/js/vendor.js",
+    "app/storefront/dist/storefront/js/script.min.js"
+  ],
+  "asset": [
+    "app/storefront/src/assets"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+    "name": "udg-shopware/udg-download-cms-element",
+    "description": "Downloads",
+    "version": "v1.0.0",
+    "type": "shopware-platform-plugin",
+    "authors": [
+        {
+            "name": "UDG"
+        }
+    ],
+    "require": {
+        "shopware/core": "*",
+        "shopware/administration": "*",
+        "shopware/storefront": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "UdgDownloadCmsElement\\UdgDownloadCmsElement",
+        "label": {
+            "de-DE": "Downloads",
+            "en-GB": "Downloads"
+        },
+        "description": {
+            "de-DE": "Erstellt einen CMS-Element für Download Teaser",
+            "en-GB": "Creates CMS-Element for download teaser"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UdgDownloadCmsElement\\": "src/"
+        }
+    }
+}

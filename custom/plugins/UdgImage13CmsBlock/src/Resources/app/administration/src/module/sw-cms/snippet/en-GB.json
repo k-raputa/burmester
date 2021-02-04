@@ -1,0 +1,12 @@
+{
+    "sw-cms": {
+        "blocks": {
+            "ImageCMSBlock": {
+                "Image13": {
+                    "label": "Image 1:3"
+                }
+            }
+        }
+    }
+}
+

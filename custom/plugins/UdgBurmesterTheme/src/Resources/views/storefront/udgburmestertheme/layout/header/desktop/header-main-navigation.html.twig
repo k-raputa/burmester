@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand"
+     itemscope
+     itemtype="http://schema.org/SiteNavigationElement">
+    <ul class="navbar-nav">
+        {% for treeItem in navigationTree %}
+            {% set category = treeItem.category %}
+            {% set name = category.translated.name %}
+            {% set id = category.id %}
+            {% set active = '|'~id~'|' in activePath ? true : false %}
+
+            <li class="nav-item nav-item-indicator{% if active %} active{% endif %}"
+                itemprop="name">
+                {% if category.type == 'folder' %}
+                    <span class="btn btn-link btn-lg btn-main-navigation action-nav-item"
+                        {% if treeItem.children|length > 0 %}
+                            data-navigation-layer-reference="nav-id-{{ id }}"
+                        {% endif %}
+                         title="{{ name }}">
+                        {{ name }}
+                    </span>
+                {% else %}
+                    <a class="btn btn-link btn-lg btn-main-navigation action-nav-item"
+                       href="{% if category.externalLink %}{{ category.externalLink }}{% else %}{{ seoUrl('frontend.navigation.page', { navigationId: id }) }}{% endif %}"
+                       itemprop="url"
+                        {% if treeItem.children|length > 0 %}
+                            data-navigation-layer-reference="nav-id-{{ id }}"
+                        {% endif %}
+                       title="{{ name }}">
+                            {{ name }}
+                    </a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

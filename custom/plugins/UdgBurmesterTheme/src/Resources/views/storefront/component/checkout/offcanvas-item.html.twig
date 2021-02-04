@@ -1,0 +1,18 @@
+{% sw_extends '@SwagCustomizedProducts/storefront/component/checkout/offcanvas-item.html.twig' %}
+
+{% block component_offcanvas_product_remove %}
+    <div class="col-2 cart-item-remove">
+        {{ block('component_offcanvas_product_remove_form') }}
+    </div>
+{% endblock %}
+
+{% block component_offcanvas_product_variants %}
+    {{ parent() }}
+
+    {% if isCustomizedProduct %}
+        {% sw_include '@Storefront/storefront/component/checkout/_include/cart-configuration.html.twig' with {
+            'items': configurationItems,
+            'productId': referencedId
+        } %}
+    {% endif %}
+{% endblock %}

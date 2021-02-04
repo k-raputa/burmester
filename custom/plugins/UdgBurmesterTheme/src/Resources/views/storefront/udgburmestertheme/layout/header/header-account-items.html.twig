@@ -1,0 +1,40 @@
+<ul class="list list-vertical">
+    {% if not context.customer %}
+        <li class="list-item">
+            <a class="anchor anchor-secondary"
+               href="{{ path('frontend.account.login.page') }}">
+                {{ "UdgBurmesterTheme.header.account.login"|trans }}
+            </a>
+        </li>
+    {% else %}
+        <li class="list-item">
+                        <span class="account-title">
+                            {{ "account.myAccount"|trans|sw_sanitize }}
+                        </span>
+        </li>
+        <li class="list-item">
+            <a class="anchor anchor-default"
+               href="{{ path('frontend.account.home.page') }}">
+                {{ "account.overviewLink"|trans|sw_sanitize }}
+            </a>
+        </li>
+        <li class="list-item">
+            <a class="anchor anchor-default"
+               href="{{ path('frontend.account.profile.page') }}">
+                {{ "account.profileLink"|trans|sw_sanitize }}
+            </a>
+        </li>
+        <li class="list-item">
+            <a class="anchor anchor-default"
+               href="{{ path('frontend.account.address.page') }}">
+                {{ "account.addressLink"|trans|sw_sanitize }}
+            </a>
+        </li>
+        <li class="list-item">
+            <a class="anchor anchor-default anchor-underline"
+               href="{{ path('frontend.account.logout.page') }}">
+                {{ "account.logout"|trans|sw_sanitize }}
+            </a>
+        </li>
+    {% endif %}
+</ul>

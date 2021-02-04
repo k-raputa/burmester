@@ -1,0 +1,147 @@
+<form action="{{ path(action) }}"
+      method="post">
+
+    <p class="form-content">
+        <div class="form-row">
+            {% block cms_form_contact_select_salutation %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-select-salutation.html.twig'
+                    with {
+                    additionalClass: 'col-md-12',
+                    required: true
+                }
+                %}
+            {% endblock %}
+
+            {% block cms_form_contact_input_first_name %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'firstName',
+                    required: true,
+                    additionalClass: 'col-md-12',
+                    label: 'account.personalFirstNameLabel',
+                    placeholder: 'account.personalFirstNamePlaceholder'
+                }
+                %}
+            {% endblock %}
+
+            {% block cms_form_contact_input_last_name %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'lastName',
+                    required: true,
+                    additionalClass: 'col-md-12',
+                    label: 'account.personalLastNameLabel',
+                    placeholder: 'account.personalLastNamePlaceholder'
+                }
+                %}
+            {% endblock %}
+        </div>
+
+        <div class="form-row">
+            {% block cms_form_contact_input_email %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'email',
+                    type: 'email',
+                    required: true,
+                    additionalClass: 'col-md-12',
+                    label: 'account.loginMailLabel',
+                    placeholder: 'account.loginMailPlaceholder'
+                }
+                %}
+            {% endblock %}
+
+            {% block cms_form_contact_input_phome %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    fieldName: 'phone',
+                    required: true,
+                    additionalClass: 'col-md-12',
+                    label: 'account.personalPhoneLabel',
+                    placeholder: 'account.personalPhonePlaceholder'
+                }
+                %}
+            {% endblock %}
+        </div>
+
+        <div class="form-row">
+            {% block cms_form_contact_input_subject %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-input.html.twig'
+                    with {
+                    required: true,
+                    fieldName: 'subject',
+                    additionalClass: 'col-12',
+                    label: 'contact.subjectLabel',
+                    placeholder: 'contact.subjectPlaceholder'
+                }
+                %}
+            {% endblock %}
+        </div>
+
+        <div class="form-row">
+            {% block cms_form_contact_comment_textarea %}
+                {% sw_include '@Storefront/storefront/element/cms-element-form/form-components/cms-element-form-textarea.html.twig'
+                    with {
+                    rows: 5,
+                    required: true,
+                    fieldName: 'comment',
+                    additionalClass: 'col-12',
+                    label: 'contact.commentLabel',
+                    placeholder: 'contact.commentPlaceholder'
+                }
+                %}
+            {% endblock %}
+        </div>
+
+
+        {% block cms_form_contact_captcha %}{% endblock %}
+
+        {% block cms_form_contact_privacy %}
+
+            {% block cms_form_privacy_opt_in_title %}{% endblock %}
+
+            <div class="form-text privacy-notice custom-control custom-checkbox">
+                <p class="form-text">
+                {% block cms_form_privacy_opt_in_input %}
+                    <input name="privacy"
+                           type="checkbox"
+                           class="custom-control-input"
+                           id="form-pvivacy-opt-in-{{ _key }}"
+                           required>
+                {% endblock %}
+
+                {% block cms_form_privacy_opt_in_label %}
+                    <label for="form-pvivacy-opt-in-{{ _key }}" class=" custom-control-label">
+                        {{ "general.privacyNotice"|trans({
+                            '%url%': path('frontend.cms.page',{ id: shopware.config.core.basicInformation.privacyPage })
+                        })|raw }}
+                    </label>
+                {% endblock %}
+            </p>
+            </div>
+        {% endblock %}
+
+        {% block cms_form_contact_required_fields_info %}
+            <p>
+                {{ "general.requiredFields"|trans }}
+            </p>
+        {% endblock %}
+
+        {% block cms_form_contact_submit %}
+            <button type="submit" class="btn btn-primary btn-lg">
+                {{ ( submitText ? submitText : 'general.formSubmit' )|trans }}
+            </button>
+        {% endblock %}
+
+    {% block cms_form_contact_hidden_fields %}
+        <div class="form-hidden-fields">
+            {% block cms_form_contact_csrf %}
+                {{ sw_csrf(action) }}
+            {% endblock %}
+
+            <input type="hidden" name="slotId" value="{{ element.id }}"/>
+
+            <input type="submit" class="submit--hidden d-none" />
+        </div>
+    {% endblock %}
+</form>

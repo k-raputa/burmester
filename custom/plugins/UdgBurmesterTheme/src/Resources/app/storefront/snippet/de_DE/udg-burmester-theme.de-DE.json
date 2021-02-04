@@ -1,0 +1,17 @@
+{
+    "UdgBurmesterTheme": {
+        "teaser-storefinder": {
+            "link": {
+                "label": "Händler finden"
+            }
+        },
+        "header": {
+            "search": {
+                "cancel": "Abbrechen"
+            },
+            "account": {
+                "login": "Anmelden oder Registieren"
+            }
+        }
+    }
+}

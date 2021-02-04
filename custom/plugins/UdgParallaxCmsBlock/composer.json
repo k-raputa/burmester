@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-parallax-cms-block",
+    "description": "Parallax-CMS-Block",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgParallaxCmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgParallaxCmsBlock",
+        "shopware-plugin-class": "UdgParallaxCmsBlock\\UdgParallaxCmsBlock",
+        "label": {
+            "de-DE": "Parallax-CMS-Block",
+            "en-GB": "Parallax-CMS-Block"
+        }
+    }
+}

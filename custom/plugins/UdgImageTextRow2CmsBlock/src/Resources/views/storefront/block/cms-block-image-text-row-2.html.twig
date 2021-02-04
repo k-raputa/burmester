@@ -1,0 +1,46 @@
+{% block sw_cms_block_image_text_row_2 %}
+    {% set columns = 2 %}
+    {% set id = element.id %}
+
+    {% block block_image_text_row_left %}
+        <div class="col-md-6 teaser-content">
+            {% block block_image_text_row_left_image %}
+                {% set element = block.slots.getSlot('left-image') %}
+
+                <div data-cms-element-id="{{ id }}">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+            {% endblock %}
+
+            {% block block_image_text_row_left_text %}
+                {% set element = block.slots.getSlot('left-text') %}
+
+                <div data-cms-element-id="{{ id }}">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+    {% block block_image_text_row_right %}
+        <div class="col-md-6 teaser-content">
+            {% block block_image_text_row_right_image %}
+                {% set element = block.slots.getSlot('right-image') %}
+
+                <div data-cms-element-id="{{ id }}">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+            {% endblock %}
+
+            {% block block_image_text_row_right_text %}
+                {% set element = block.slots.getSlot('right-text') %}
+
+                <div data-cms-element-id="{{ id }}">
+                    {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                </div>
+            {% endblock %}
+        </div>
+    {% endblock %}
+
+{% endblock %}
+

@@ -1,0 +1,14 @@
+{% set customizedProductsTemplate = page.product.extensions.swagCustomizedProductsTemplate %}
+
+{% if customizedProductsTemplate and customizedProductsTemplate.active and customizedProductsTemplate.options|length %}
+    {% if customizedProductsTemplate.internalName == 'gravur' %}
+        {% for option in customizedProductsTemplate.options %}
+
+            {% sw_include '@UdgExtendedProductDetailPage/storefront/page/product-detail/customized-products/price.html.twig' with {
+                value: option
+            } %}
+
+        {% endfor %}
+    {% endif %}
+{% endif %}
+

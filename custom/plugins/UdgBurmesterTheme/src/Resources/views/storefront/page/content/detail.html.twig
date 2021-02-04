@@ -1,0 +1,9 @@
+{% sw_extends '@Storefront/storefront/page/content/detail.html.twig' %}
+
+{% block page_content_section %}
+    <div class="cms-section {{ sectionClasses|join(' ') }}"
+         style="{% if sectionBgColor %}background-color: {{ sectionBgColor }};{% endif %}{% if sectionBgImg %}background-image: url({{ sectionBgImg }});background-size: {{ section.backgroundMediaMode }};{% endif %}">
+        <div class="block-background"></div>
+        {% sw_include "@Storefront/storefront/section/cms-section-" ~ section.type ~ ".html.twig" %}
+    </div>
+{% endblock %}

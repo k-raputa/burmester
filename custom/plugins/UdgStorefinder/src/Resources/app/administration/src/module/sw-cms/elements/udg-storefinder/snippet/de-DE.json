@@ -1,0 +1,33 @@
+{
+    "sw-cms": {
+        "elements": {
+            "udg": {
+                "storefinder": {
+                    "general": {
+                        "label": "Google Maps Store Finder Element"
+                    },
+
+                    "config": {
+                        "description": "Nur zu, passen Sie die Karte an",
+                        "mapUrl": {
+                            "label": "Karten-URL",
+                            "placeholder": "Geben Sie hier die URL ein..."
+                        },
+                        "mapApiKey": {
+                            "label": "API-Schlüssel",
+                            "placeholder": "Geben Sie hier den API-Schlüssel an..."
+                        },
+                        "mapWidth": {
+                            "label": "Breite der Karte",
+                            "placeholder": "Geben Sie hier die Breite an..."
+                        },
+                        "mapHeight": {
+                            "label": "Höhe der Karte",
+                            "placeholder": "Geben Sie hier die Höhe an..."
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

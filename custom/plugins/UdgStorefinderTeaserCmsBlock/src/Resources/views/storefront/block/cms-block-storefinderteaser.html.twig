@@ -1,0 +1,27 @@
+{% block sw_cms_block_storefinderteaser %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="offset-lg-1 col-lg-10">
+                <div class="teaser-wide">
+                    {% block block_storefinderteaser_top %}
+                        {% set element = block.slots.getSlot('top') %}
+                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                    {% endblock %}
+                    <div class="well theme-white">
+                        {% block block_storefinderteaser_bottom %}
+                            {% set element = block.slots.getSlot('bottom') %}
+                            {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                        {% endblock %}
+                        <a href="{{ seoUrl('frontend.navigation.page', { navigationId: shopware.config.core.basicInformation.storefinder  }) }}"
+                           class="btn btn-primary">
+                            {{ "UdgBurmesterTheme.teaser-storefinder.link.label"|trans }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

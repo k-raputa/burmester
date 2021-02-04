@@ -1,0 +1,22 @@
+.sw-cms-el-preview-udg-download {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 4px;
+
+    .sw-cms-el-preview-udg-download-preview {
+        display: grid;
+        grid-auto-rows: 16px;
+        grid-gap: 4px;
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .sw-cms-el-preview-udg-download-preview__action {
+        background: #d1d9e0;
+        color: #52667a;
+        border-radius: 3px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 26px;
+    }
+}

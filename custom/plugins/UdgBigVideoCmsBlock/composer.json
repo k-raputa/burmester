@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-bigvideo-cms-block",
+    "description": "BigVideo-CMS-Block",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgBigVideoCmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgBigVideoCmsBlock",
+        "shopware-plugin-class": "UdgBigVideoCmsBlock\\UdgBigVideoCmsBlock",
+        "label": {
+            "de-DE": "BigVideo-CMS-Block",
+            "en-GB": "BigVideo-CMS-Block"
+        }
+    }
+}

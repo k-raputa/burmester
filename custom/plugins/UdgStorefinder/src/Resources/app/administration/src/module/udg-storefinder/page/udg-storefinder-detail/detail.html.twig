@@ -1,0 +1,108 @@
+{% block udg_storefinder_detail %}
+    <sw-page class="udg-module-storefinder-detail">
+        {% block udg_storefinder_detail_header %}
+            <template slot="smart-bar-header">
+                <h2>{{ placeholder(entity, 'city', $tc('udg.storefinder.module.page.detail.default')) }}</h2>
+            </template>
+        {% endblock %}
+
+        {% block udg_storefinder_detail_language_switch %}
+            <template slot="language-switch">
+                <sw-language-switch
+                    :saveChangesFunction="saveOnLanguageChange"
+                    :abortChangeFunction="abortOnLanguageChange"
+                    @on-change="onChangeLanguage">
+                </sw-language-switch>
+            </template>
+        {% endblock %}
+
+        <template slot="smart-bar-actions">
+            <sw-button :routerLink="{ name: 'udg.storefinder.index' }">
+                {{ $tc('udg.storefinder.module.button.cancel') }}
+            </sw-button>
+            <sw-button-process :isLoading="isLoading"
+                               :processSuccess="processSuccess"
+                               variant="primary"
+                               @process-finish="saveFinish"
+                               @click="onClickSave">
+                {{ $tc('udg.storefinder.module.button.save') }}
+            </sw-button-process>
+        </template>
+
+        <template slot="content">
+            <sw-card-view>
+                <sw-card v-if="entity" :title="$tc('udg.storefinder.module.page.detail.card.address')"
+                         :isLoading="isLoading">
+                    <sw-field :label="$tc('udg.storefinder.module.column.company')"
+                              v-model="entity.company"
+                              required
+                              validation="required">
+                    </sw-field>
+                    <sw-field :label="$tc('udg.storefinder.module.column.street')"
+                              v-model="entity.street"
+                              required
+                              validation="required">
+                    </sw-field>
+                    <sw-field :label="$tc('udg.storefinder.module.column.location')"
+                              v-model="entity.location"
+                              required
+                              validation="required">
+                    </sw-field>
+                    {% block sw_customer_address_form_country_field %}
+                        <sw-entity-single-select
+                            class="udg-module-storefinder-country-select"
+                            entity="country"
+                            :label="$tc('udg.storefinder.module.column.country')"
+                            validation="required"
+                            required
+                            v-model="entity.countryId">
+                        </sw-entity-single-select>
+                    {% endblock %}
+                </sw-card>
+
+                <sw-card v-if="entity" :title="$tc('udg.storefinder.module.page.detail.card.contact')"
+                         :isLoading="isLoading">
+                    <sw-field :label="$tc('udg.storefinder.module.column.phone')"
+                              v-model="entity.phone">
+                    </sw-field>
+                    <sw-field :label="$tc('udg.storefinder.module.column.email')"
+                              v-model="entity.email">
+                    </sw-field>
+                    <sw-field :label="$tc('udg.storefinder.module.column.web')"
+                              v-model="entity.web">
+                    </sw-field>
+                </sw-card>
+
+                <sw-card v-if="entity" :title="$tc('udg.storefinder.module.page.detail.card.technical')"
+                         :isLoading="isLoading">
+                    {% block sw_review_detail_description_list_status %}
+                        <sw-switch-field
+                            :label="$tc('udg.storefinder.module.column.active')"
+                            class="status-switch"
+                            :bordered="true"
+                            v-model="entity.active">
+                        </sw-switch-field>
+                    {% endblock %}
+
+                    <sw-field :label="$tc('udg.storefinder.module.column.latitude')"
+                              v-model="entity.latitude"
+                              required
+                              validation="required">
+                    </sw-field>
+                    <sw-field :label="$tc('udg.storefinder.module.column.longitude')"
+                              v-model="entity.longitude"
+                              required
+                              validation="required">
+                    </sw-field>
+                    <sw-field :label="$tc('udg.storefinder.module.column.distrotype')"
+                              v-model="entity.distrotype">
+                    </sw-field>
+                    <sw-textarea-field type="textarea"
+                                       :label="$tc('udg.storefinder.module.column.productline')"
+                                       v-model="entity.productline">
+                    </sw-textarea-field>
+                </sw-card>
+            </sw-card-view>
+        </template>
+    </sw-page>
+{% endblock %}

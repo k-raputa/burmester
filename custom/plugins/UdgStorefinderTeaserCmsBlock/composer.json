@@ -1,0 +1,19 @@
+{
+    "name": "udg/udg-storefinderteaser-cms-block",
+    "description": "StorefinderTeaser-CMS-Block",
+    "type": "shopware-platform-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UdgStorefinderTeaserCmsBlock\\": "src/"
+        }
+    },
+    "extra": {
+        "installer-name" : "UdgStorefinderTeaserCmsBlock",
+        "shopware-plugin-class": "UdgStorefinderTeaserCmsBlock\\UdgStorefinderTeaserCmsBlock",
+        "label": {
+            "de-DE": "StorefinderTeaser-CMS-Block",
+            "en-GB": "StorefinderTeaser-CMS-Block"
+        }
+    }
+}

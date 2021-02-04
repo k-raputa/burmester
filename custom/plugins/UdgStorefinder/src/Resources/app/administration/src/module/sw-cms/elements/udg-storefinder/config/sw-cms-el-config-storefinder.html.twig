@@ -1,0 +1,35 @@
+{% block sw_cms_el_config_storefinder %}
+<div class="sw-cms-el-config-storefinder">
+    <div class="sw-cms-el-config-storefinder-headline">
+        <p>{{ $tc('sw-cms.elements.udg.storefinder.config.description') }}</p>
+    </div>
+
+    <sw-field class="sw-cms-el-config-storefinder-field"
+              v-model="element.config.mapSrc.value"
+              type="text"
+              :label="$tc('sw-cms.elements.udg.storefinder.config.mapUrl.label')"
+              :placeholder="$tc('sw-cms.elements.udg.storefinder.config.mapUrl.placeholder')">
+    </sw-field>
+
+    <sw-field class="sw-cms-el-config-storefinder-field"
+              v-model="element.config.mapApiKey.value"
+              type="text"
+              :label="$tc('sw-cms.elements.udg.storefinder.config.mapApiKey.label')"
+              :placeholder="$tc('sw-cms.elements.udg.storefinder.config.mapApiKey.placeholder')">
+    </sw-field>
+
+    <sw-field class="sw-cms-el-config-storefinder-field"
+              v-model="element.config.mapWidth.value"
+              type="text"
+              :label="$tc('sw-cms.elements.udg.storefinder.config.mapWidth.label')"
+              :placeholder="$tc('sw-cms.elements.udg.storefinder.config.mapWidth.placeholder')">
+    </sw-field>
+
+    <sw-field class="sw-cms-el-config-storefinder-field"
+              v-model="element.config.mapHeight.value"
+              type="text"
+              :label="$tc('sw-cms.elements.udg.storefinder.config.mapHeight.label')"
+              :placeholder="$tc('sw-cms.elements.udg.storefinder.config.mapHeight.placeholder')">
+    </sw-field>
+</div>
+{% endblock %}

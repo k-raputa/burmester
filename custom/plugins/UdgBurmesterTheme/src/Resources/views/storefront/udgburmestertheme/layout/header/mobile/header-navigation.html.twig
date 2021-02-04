@@ -1,0 +1,34 @@
+<div class="component-header-mobile-navigation theme-default"
+     data-plugin="headerMobileNavigation">
+
+    {# First Layer #}
+    <div class="navigation-layer layer-index show">
+        <div class="container-fluid">
+            {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/mobile/header-navigation-level1.html.twig' with {
+                navigationTree: page.header.navigation.tree,
+                activePath: activePath
+            } %}
+        </div>
+    </div>
+
+    {# Second Layer #}
+    {% for treeItem in page.header.navigation.tree %}
+        {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/mobile/header-navigation-level2.html.twig' with {
+            navigationTree: treeItem,
+            activePath: activePath
+        } only %}
+    {% endfor %}
+
+    {# Third Layer #}
+    {% for treeItem in page.header.navigation.tree %}
+        {% for treeItem2 in treeItem.children %}
+            {% if treeItem2.children %}
+                {% sw_include '@UdgBurmesterTheme/storefront/udgburmestertheme/layout/header/mobile/header-navigation-level3.html.twig' with {
+                    navigationTree: treeItem2,
+                    activePath: activePath,
+                    parentCategoryId: treeItem.category.id
+                } only %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</div>

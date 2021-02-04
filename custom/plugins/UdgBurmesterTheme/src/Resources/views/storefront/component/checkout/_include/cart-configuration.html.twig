@@ -1,0 +1,49 @@
+{% sw_extends '@SwagCustomizedProducts/storefront/component/checkout/_include/cart-configuration.html.twig' %}
+
+{% block component_cart_customized_products_configuration %}
+    <div class="cart-item-variants">
+
+        {% block component_cart_customized_products_configuration_title %}{% endblock %}
+
+        {% for option in lineItem.children|first.payload.options %}
+            <div class="cart-item-variants-properties">
+                <div class="cart-item-variants-properties-name">{{ option.group }}:</div>
+                <div class="cart-item-variants-properties-value">{{ option.option }}</div>
+            </div>
+        {% endfor %}
+
+        {% block component_cart_customized_products_configuration_items %}
+            {% for item in items %}
+                <div class="cart-item-variants-properties">
+                    {% block component_cart_customized_products_configuration_item %}
+                        <div class="cart-item-variants-properties-name">{{ item.label }}:</div>
+
+                        {% if item.children|length > 0 %}
+                            {% for child in item.children %}
+                                {% set itemPayloads = itemPayloads|merge([
+                                    child.label
+                                ]) %}
+                            {% endfor %}
+                            {% set itemPayload = itemPayloads.join(' ') %}
+                        {% else %}
+                            {% if item.payload.type == 'checkbox' %}
+                                {% set itemPayload = item.label %}
+                            {% elseif item.payload.type == 'datetime' %}
+                                {% set itemPayload = item.payload.value|date('d.m.Y', false) %}
+                            {% elseif item.payload.type == 'timestamp' %}
+                                {% set itemPayload = item.payload.value|date('H:i', false) %}
+                            {% else %}
+                                {% set itemPayload = item.payload.value %}
+                            {% endif %}
+                        {% endif %}
+
+                        <div class="cart-item-variants-properties-value">{{ itemPayload }}</div>
+                    {% endblock %}
+                </div>
+            {% endfor %}
+        {% endblock %}
+
+    </div>
+{% endblock %}
+
+

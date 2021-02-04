@@ -1,0 +1,31 @@
+<div class="component-header-desktop-search theme-default" data-plugin="headerDesktopSearch">
+    <div class="container-fluid">
+        <div class="component-header-search-shopware" data-plugin="headerSearchShopware">
+            <form action="{{ path('frontend.search.page') }}" method="get" data-search-form="true" data-url="{{ path('frontend.search.suggest') }}?search="
+                  class="header-search-form">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <button type="submit" class="btn header-search-btn" aria-label="{{ "header.searchButton"|trans|striptags }}">
+                            <span class="header-search-icon">
+                                <i class="icon icon-magnifier">
+                                    <svg class="svg-import"><use xlink:href="#icon-magnifier"></use></svg>
+                                </i>
+                            </span>
+                        </button>
+                    </div>
+
+                    <input type="search" name="search" class="form-control header-search-input" autocomplete="off"
+                           autocapitalize="off" placeholder="{{ "header.searchPlaceholder"|trans|striptags }}" aria-label="{{ "header.searchPlaceholder"|trans|striptags }}"
+                           maxlength="30" value="{{ page.searchTerm }}">
+
+                    <div class="input-group-append">
+                        <button type="reset" class="anchor anchor-secondary active btn-cancel action-cancel">
+                            {{ "UdgBurmesterTheme.header.search.cancel"|trans }}
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="navigation-shadow"></div>
+</div>

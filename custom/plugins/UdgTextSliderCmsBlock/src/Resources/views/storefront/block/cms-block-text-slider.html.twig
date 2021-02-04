@@ -1,0 +1,26 @@
+{% block block_text_slider %}
+
+    {% set elementCount = 3 %}
+
+    <div class="component-quote-slider" data-plugin="quoteSlider">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="offset-md-1 col-md-10">
+                    <div class="slider">
+                        {% for i in 1..elementCount %}
+                            {% set element = block.slots.getSlot('slide' ~ i) %}
+
+                            {% block block_text_slider_inner %}
+                                {% if element.data().content %}
+                                    <div class="quote-container">
+                                        {% sw_include "@Storefront/storefront/element/cms-element-" ~ element.type ~ ".html.twig" ignore missing %}
+                                    </div>
+                                {% endif %}
+                            {% endblock %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

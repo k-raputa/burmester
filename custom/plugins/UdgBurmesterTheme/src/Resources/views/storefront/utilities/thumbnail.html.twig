@@ -1,0 +1,38 @@
+{# uses cms block column count and all available thumbnails to determine the correct image size for the current viewport #}
+{% set dataSrcsetValue %}{% apply spaceless %}
+    {{ media|sw_encode_media_url }} {{ thumbnails|first.width + 1 }}w,
+{% endapply %}{% endset %}
+
+{% set attributes = attributes|merge({'class': 'image-lazyload lazyload ' ~ attributes.class}) %}
+
+{% if media.thumbnails|length > 0 %}
+    {% set thumbnails = media.thumbnails|sort|reverse %}
+
+    {# generate srcset with all available thumbnails #}
+    {% set dataSrcsetValue %}{% apply spaceless %}
+        {{ media|sw_encode_media_url }} {{ thumbnails|first.width + 1 }}w, {% for thumbnail in thumbnails %}{{ thumbnail.url | sw_encode_url }} {{ thumbnail.width }}w{% if not loop.last %}, {% endif %}{% endfor %}
+    {% endapply %}{% endset %}
+{% endif %}
+
+{% if (1 | round(3))  == ((media.metaData.width / media.metaData.height) | round(3)) %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" %}
+{% elseif ((2/1) | round(3))  == ((media.metaData.width / media.metaData.height) | round(3)) %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAABCAQAAABeK7cBAAAAC0lEQVR42mNkAAIAAAoAAv/lxKUAAAAASUVORK5CYII=" %}
+{% elseif ((3/2) | round(3))  == ((media.metaData.width / media.metaData.height) | round(3)) %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" %}
+{% elseif ((4/3) | round(3))  == ((media.metaData.width / media.metaData.height) | round(3)) %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAAe/WZNAAAADklEQVR42mNkgAJGDAYAAFEABCaLYqoAAAAASUVORK5CYII=" %}
+{% elseif ((3/4) | round(3))  == ((media.metaData.width / media.metaData.height) | round(3)) %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAECAYAAABLLYUHAAAAEklEQVR42mNk+M9QzwAFjMRxALLKBf1EA+1TAAAAAElFTkSuQmCC" %}
+{% elseif ((16/9) | round(3))  == ((media.metaData.width / media.metaData.height) | round(3)) %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAQAAACRI2S5AAAAEElEQVR42mNkIAAYRxWAAQAG9gAKqv6+AwAAAABJRU5ErkJggg==" %}
+{% else %}
+    {% set srcsetValue = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" %}
+{% endif %}
+
+<img src="{{ media|sw_encode_media_url }}"
+     srcset="{{ srcsetValue }}"
+     data-sizes="auto"
+     data-srcset="{{ dataSrcsetValue }}"
+{% for key, value in attributes %}{% if value != '' %} {{ key }}="{{ value }}"{% endif %}{% endfor %}
+/>
