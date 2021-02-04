@@ -1,0 +1,56 @@
+{
+    "name": "customer-burmester/shopware",
+    "type": "project",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "platform",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://artifactory.tech.udg.de/artifactory/api/composer/composer-local"
+        }
+    ],
+    "config": {
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Shopware\\Development\\": "src/"
+        }
+    },
+    "require": {
+        "php": "~7.2",
+        "ocramius/package-versions": "1.4.0",
+        "shopware/platform": "^6.3",
+        "udg/customer-burmester-frontend": "*",
+        "udg-shopware/udg-plugin-automation": "6.*",
+        "udg-shopware/swag-customized-products": "^2.6.1",
+        "udg-shopware/dersko-basic-auth": "1.*"
+    },
+    "require-dev": {
+        "ext-tokenizer": "*",
+        "ext-xmlwriter": "*",
+        "bheller/images-generator": "1.0.1",
+        "fzaninotto/faker": "1.9.1",
+        "johnkary/phpunit-speedtrap": "3.1.0",
+        "league/flysystem-memory": "1.0.2",
+        "mbezhanov/faker-provider-collection": "1.2.1",
+        "phpunit/phpunit": "8.5.2",
+        "smalot/pdfparser": "0.14.0",
+        "symfony/browser-kit": "4.4.4",
+        "symfony/dependency-injection": "4.4.4",
+        "symfony/phpunit-bridge": "4.4.4",
+        "symfony/stopwatch": "4.4.4",
+        "symfony/var-dumper": "4.4.4",
+        "symfony/web-profiler-bundle": "4.4.4",
+        "symfony/dom-crawler": "4.4.4",
+        "symfony/http-client": "^5.0"
+    }
+}
