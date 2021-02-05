@@ -32,6 +32,6 @@ jobs:
             echo ${FTP_LOCATION}
             git config git-ftp.user ${FTP_USER}
             git config git-ftp.url ${FTP_URL}/${RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM}
-            git config git-ftp.password ${FTP_PASSWD}
+            git config git-ftp.password ${FTP_PWD}
             git ftp init
       #- run: ssh -oStrictHostKeyChecking=no -v {SSH_USER}@${SSH_URL} "./deploy.sh ${RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM} ${CIRCLE_BUILD_NUM} 'staging_shopware' "
