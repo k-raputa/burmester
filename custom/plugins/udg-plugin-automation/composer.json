@@ -1,0 +1,38 @@
+{
+    "name": "udg-shopware\/udg-plugin-automation",
+    "keywords": [
+        "shopware",
+        "environment",
+        "configuration",
+        "automation",
+        "update",
+        "plugin"
+    ],
+    "description": "UDG Plugin Automation for Shopware",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "UDG Rhein-Main GmbH",
+            "role": "Manufacturer"
+        }
+    ],
+    "type": "shopware-platform-plugin",
+    "extra": {
+        "installer-name": "UdgPluginAutomation",
+        "shopware-plugin-class": "UdgPluginAutomation\\UdgPluginAutomation",
+        "label": {
+            "de-DE": "UDG Plugin Automation for Shopware",
+            "en-GB": "UDG Plugin Automation for Shopware"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "UdgPluginAutomation\\": "src\/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "shopware\/core": "^6.3"
+    },
+    "version": "6.1.6"
+}

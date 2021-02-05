@@ -1,0 +1,39 @@
+{
+    "name": "udg-shopware\/dersko-basic-auth",
+    "description": "Protect your shop with a basic auth protection",
+    "version": "1.1.0",
+    "type": "shopware-platform-plugin",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Oliver Lerch"
+        }
+    ],
+    "require": {
+        "shopware\/core": "*"
+    },
+    "extra": {
+        "shopware-plugin-class": "derskoBasicAuthSW6\\derskoBasicAuthSW6",
+        "label": {
+            "de-DE": "Basic Auth Passwort-Schutz",
+            "en-GB": "Basic Auth Password Protection"
+        },
+        "description": {
+            "de-DE": "Sch\u00fctzen Sie Ihren Shopware-Shop vor neugierigen Suchmaschinen und Benutzern - ohne weitere l\u00e4stige Zugangsdaten, einfach mit Ihren Backend-Login-Daten.",
+            "en-GB": "Protect your shop from snoopy search engine crawlers and visitors - without having to remember any more credentials, just with your backend user and password."
+        },
+        "manufacturerLink": {
+            "de-DE": "https:\/\/store.shopware.com\/voric-solutions.html",
+            "en-GB": "https:\/\/store.shopware.com\/en\/voric-solutions.html"
+        },
+        "supportLink": {
+            "de-DE": "https:\/\/account.shopware.com\/",
+            "en-GB": "https:\/\/account.shopware.com\/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "derskoBasicAuthSW6\\": "src\/"
+        }
+    }
+}

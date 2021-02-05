@@ -1,0 +1,23 @@
+{% block swag_customized_products_option_type_template_datetime %}
+    {# ToDo CUS-7 - props.timeEnabled should be added to the admin form #}
+    {% set enableTime = 'false' %}
+
+    {# ToDo CUS-23 - Re-implement correct selector #}
+    {# "clearButton": "#clear-button-option-id-' ~ option.id ~ '" #}
+    {% set pickerProperties = '{
+        "locale": "' ~ app.request.locale ~ '",
+        "enableTime": ' ~ enableTime ~ ',
+        "minDate": "' ~ props.minDate ~ '",
+        "maxDate": "' ~ props.maxDate ~ '",
+        "allowInput": "false",
+        "selectors": {
+            "openButton": "#open-button-option-id-' ~ option.id ~ '",
+            "clearButton": null
+        }
+    }' %}
+
+    {% sw_include customizedProductsOptionTemplatePrefix ~ 'datepicker/component.html.twig' with {
+        'pickerProperties': pickerProperties,
+        'type': 'date'
+    } %}
+{% endblock %}
