@@ -1,0 +1,83 @@
+{
+    "customizedProducts": {
+        "editor": {
+            "bold": "Fett",
+            "italic": "Kursiv",
+            "underline": "Unterstrichen",
+            "strikeThrough": "Durchgestrichen",
+            "textFormatting": "Textformatierung"
+        },
+        "configurationShare": {
+            "title": "Teile diese Konfiguration",
+            "button": "Teilen",
+            "oneTimeLabel": "Einmal-Link",
+            "unavailable": "Die Konfiguration ist abgelaufen oder kann nicht mehr abgerufen werden."
+        },
+        "configurationEdit": {
+            "notFullyRestorable": "Die Konfiguration konnte nicht vollständig wiederhergestellt werden, einige Optionen haben sich geändert.",
+            "notRestorable": "Die Konfiguration konnte nicht wiederhergestellt werden",
+            "label": "Konfiguration bearbeiten"
+        },
+        "priceDisplay":  {
+            "unitPrice": "Pro-Stück-Aufschläge",
+            "productPrice": "Produktpreis",
+            "subTotal": "Zwischensumme",
+            "oneTimePrice": "Einmalaufschlag",
+            "summary": "Zusammenfassung",
+            "totalPrice": "Gesamtpreis"
+        },
+        "stepByStep": {
+            "navigation": {
+                "btnPrev": "Zurück",
+                "btnNext": "Weiter",
+                "btnConfigureProduct": "Produkt konfigurieren",
+                "btnChangeConfiguration": "Konfiguration ändern",
+                "btnFinish": "Abschließen",
+                "required": "Pflichtfeld"
+            }
+        },
+        "addToCart": {
+            "success": "Custom Product hinzugefügt.",
+            "error": {
+                "invalidExtensionType": "Invalider Dateityp festgestellt.",
+                "maxFileSizeExceeded": "Maximale Dateigröße überschritten.",
+                "maxFileCountExceeded": "Maximale Dateianzahl überschritten.",
+                "priceCalculation": "Beim Berechnen des Custom-Product-Preises ist ein Fehler aufgetreten.",
+                "notAvailable": "Ein oder mehrere Custom Products sind mit dieser Konfiguration nicht mehr verfügbar.",
+                "default": "Beim Hinzufügen des Custom Products zum Warenkorb ist ein Fehler aufgetreten."
+            }
+        },
+        "exclusionViolations": {
+            "excludeItem": "Die aktuelle Kombination aus %1 und den folgenden Option(en) ist nicht zulässig: %2",
+            "headline": "Bitte Konflikte lösen"
+        },
+        "checkoutItem": {
+            "valueLabel": "Wert:"
+        },
+        "optionTypes": {
+            "selectNoValueText": "Keine Auswahl",
+            "textareaClearButton": "Feld leeren",
+            "upload": {
+                "dropzoneHeadlineText": "Ziehe die Dateien hier hinein",
+                "dropzoneRestrictionsText": "(Max. %maxCount% Datei(en), max. %maxFileSize% MB pro Datei)",
+                "dropzoneBrowseButton": "Dateien auswählen"
+            }
+        },
+        "priceLabelNotice": "**Aufgrund von Neuberechnungen im Warenkorb sind abweichende Endpreise möglich.",
+        "optionRequired": "(Pflichtfeld)",
+        "cart": {
+            "configurationTitle": "{0} Keine Konfiguration - <a href=\"%path%\">Jetzt konfigurieren!</a>|]0,Inf[ Konfiguration"
+        },
+        "priceTagFilter": {
+            "oneTimeSurchargeSuffix": "einmalig",
+            "perItemSuffix": "pro Stück"
+        },
+        "showPreview": {
+            "expandLabel": "mehr anzeigen",
+            "shrinkLabel": "weniger anzeigen"
+        },
+        "confirmInput": {
+            "label": "Ich habe die Konfiguration überprüft und bestätige die Richtigkeit meiner Angaben."
+        }
+    }
+}

@@ -1,0 +1,36 @@
+{% block swag_show_preview %}
+    <div class="swag-show-preview" data-ellipsis="true">
+
+        {% block swag_show_preview_truncated %}
+            <span class="swag-ellipsis-span">
+
+                {% block swag_show_preview_truncated_text %}
+                    {{ text | truncateEllipsis(truncateChars, '...') }}
+                {% endblock %}
+
+                {% block swag_show_preview_truncated_expand %}
+                    <a href="#expand" class="swag-ellipsis-expand-link">
+                        {{ "customizedProducts.showPreview.expandLabel"|trans }}
+                    </a>
+                {% endblock %}
+            </span>
+        {% endblock %}
+
+        {% block swag_show_preview_full %}
+            <span class="swag-ellipsis-total-span">
+
+                {% block swag_show_preview_full_text%}
+                    {% autoescape false %}
+                        {{ fullText }}
+                    {% endautoescape %}
+                {% endblock %}
+
+                {% block swag_show_preview_full_shrink %}
+                    <a href="#shrink" class="swag-ellipsis-shrink-link">
+                        {{ "customizedProducts.showPreview.shrinkLabel"|trans }}
+                    </a>
+                {% endblock %}
+            </span>
+        {% endblock %}
+    </div>
+{% endblock %}

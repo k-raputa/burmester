@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Basic Auth</title>
+        <title lang="de-DE">Basic Auth</title>
+        <input-field type="bool">
+            <name>active</name>
+            <label>Password protection active</label>
+            <label lang="de-DE">Passwort-Schutz aktiv</label>
+            <helpText>As long as this switch is not active, there is no basic auth password protection</helpText>
+            <helpText lang="de-DE">Solange dieser Schalter nicht aktiv ist, ist der Passwort-Schutz deaktiviert</helpText>
+        </input-field>
+
+        <input-field type="text">
+            <name>realm</name>
+            <label>Realm</label>
+            <label lang="de-DE">Realm</label>
+            <helpText>This text is shown to the client when he's queried for username and password</helpText>
+            <helpText lang="de-DE">Dieser Text wird bei der Abfrage von Benutzername und Passwort angezeigt.</helpText>
+        </input-field>
+
+        <input-field type="text">
+            <name>allowedIps</name>
+            <label>allowed IPs</label>
+            <label lang="de-DE">erlaubte IPs</label>
+            <helpText>These ips (or ranges) can access the shop without being prompted for credentials. Comma separate ip or range (range-format: 192.168.1.0/24)</helpText>
+            <helpText lang="de-DE">Diese IPs bzw. Ranges können auch ohne Passwort auf den Shop Zugreifen. Kommagetrennte IPs uns Ranges (Range-Format: 192.168.1.0/24)</helpText>
+        </input-field>
+    </card>
+</config>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="UdgPluginAutomation\Commands\EnvironmentUpdateCommand">
+            <argument type="service" id="udg_plugin_automation.service.plugin.update"/>
+            <argument type="service" id="udg_plugin_automation.service.configuration.load"/>
+            <tag name="console.command"/>
+        </service>
+        <service id="UdgPluginAutomation\Commands\CacheClearCommand">
+            <tag name="console.command"/>
+        </service>
+
+        <service id="udg_plugin_automation.service.configuration.load"
+                 class="UdgPluginAutomation\Service\Configuration\Load">
+            <tag name="udg_plugin_automation.service.configuration"/>
+        </service>
+
+        <service id="udg_plugin_automation.service.plugin.update"
+                 class="UdgPluginAutomation\Service\Plugin\Update">
+            <tag name="udg_plugin_automation.service.plugin"/>
+
+            <call method="setPluginRepository">
+                <argument type="service" id="plugin.repository" />
+            </call>
+        </service>
+    </services>
+</container>
