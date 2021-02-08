@@ -4,24 +4,13 @@
 #
 version: 2
 jobs:
-  build:
+  deploy_to_master:
     docker:
-      # Specify the version you desire here
       - image: circleci/php:7.1-node-browsers
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
     steps:
       - checkout
       - deploy:
-          name: Deploy to host if branch is master
+          name: Deploy to master
           command: |
             sudo apt-get update
             sudo apt-get -qq install git-ftp
@@ -34,4 +23,41 @@ jobs:
             git config git-ftp.url ${FTP_URL}/${RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM}
             git config git-ftp.password ${FTP_PASSWD}
             git ftp init
-      #- run: ssh -oStrictHostKeyChecking=no -v {SSH_USER}@${SSH_URL} "./deploy.sh ${RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM} ${CIRCLE_BUILD_NUM} 'staging_shopware' "
+      #- run: ssh -oStrictHostKeyChecking=no -v {SSH_USER}@${SSH_URL} "./live_shopware/releases/${RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM}/dev-ops/deploy/scripts/deploy.s ${RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM} ${CIRCLE_BUILD_NUM} 'live_shopware' "
+
+  deploy_to_staging:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    steps:
+      - checkout
+      - deploy:
+          name: Deploy to staging
+          command: |
+            sudo apt-get update
+            sudo apt-get -qq install git-ftp
+            echo "'_$(git status -uno --porcelain | wc -l)_'"
+            git status -uno --porcelain
+            git config git-ftp.user ${STAGING_FTP_USER}
+            git config git-ftp.url ${STAGING_FTP_URL}/${STAGING_RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM}
+            git config git-ftp.password ${STAGING_FTP_PASSWD}
+            git ftp init
+      #- run: ssh -oStrictHostKeyChecking=no -v {STAGING_SSH_USER}@${STAGING_SSH_URL} "./staging_shopware/releases/${STAGING_RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM}/dev-ops/deploy/scripts/deploy.sh ${STAGING_RELEASE_FOLDER_NAME}_${CIRCLE_BUILD_NUM} ${CIRCLE_BUILD_NUM} 'staging_shopware' "
+
+
+
+
+# Orchestrate our job run sequence
+workflows:
+  version: 2
+  build-project:
+    jobs:
+      - deploy_to_master:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy_to_staging:
+          filters:
+            branches:
+              only:
+                - staging
