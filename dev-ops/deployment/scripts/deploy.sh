@@ -59,8 +59,14 @@ echo "Enabling maintenance mode"
 cd ..
 cd current
 bin/console sales-channel:maintenance:enable --all
-echo "Linking current to revision: $DEPLOY_PATH/$DEPLOY_BUILD_FOLDER"
+
+echo "Linking old current to previous"
 cd ..
+OLD_CURRENT_LINK=$(readlink $DEPLOY_PATH/current);
+rm -f previous
+ln -s $OLD_CURRENT_LINK previous
+
+echo "Linking current to revision: $DEPLOY_PATH/$DEPLOY_BUILD_FOLDER"
 rm -f current
 ln -s $DEPLOY_PATH/$DEPLOY_BUILD_FOLDER current
 echo "Post deploy commands"
@@ -68,6 +74,7 @@ cd current
 #cachetool --fcgi=127.0.0.1:9000 opcache:reset
 bin/console sales-channel:maintenance:disable --all
 cd ../..
-##echo "Removing old releases"
-##cd releases && ls -t | tail -n +5 | xargs rm -rf
+
+echo "Removing old releases"
+sh $SHARED_PATH/cleanup_release_dir.sh
 
