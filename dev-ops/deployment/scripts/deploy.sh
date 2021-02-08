@@ -43,6 +43,7 @@ cd ..
 mkdir platform
 ./psh.phar init-composer
 chmod 777 bin/console
+chmod 777 psh.phar
 bin/console database:migrate --all core
 bin/console bundle:dump
 ./psh.phar deployment:build
