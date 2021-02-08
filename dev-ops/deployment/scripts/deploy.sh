@@ -12,7 +12,7 @@ SHARED_PATH="$HOME/$SUBFOLDER/shared"
 
 
 echo "Adding execute permissions for files to user and group"
-find $DEPLOY_PATH/ -type f -exec chmod u+x {} \;
+#find $DEPLOY_PATH/ -type f -exec chmod u+x {} \;
 echo "Linking shared files and folders into new release"
 cd $DEPLOY_PATH/$DEPLOY_BUILD_FOLDER
 ln -s $SHARED_PATH/.env .env
@@ -36,7 +36,7 @@ ln -s $SHARED_PATH/var/log log
 cd ..
 mkdir files
 cd files
-ln -s /home/jusee/shared/files/media media
+ln -s $SHARED_PATH/files/media media
 echo "Running build commands"
 cd ..
 
@@ -55,13 +55,13 @@ bin/console bundle:dump
 #bin/console cache:clear
 
 echo "Enabling maintenance mode"
-cd ../..
-cd shopware/current
+cd ..
+cd current
 bin/console sales-channel:maintenance:enable --all
-echo "Linking current to revision: $DEPLOY_BUILD_FOLDER"
+echo "Linking current to revision: $DEPLOY_PATH/$DEPLOY_BUILD_FOLDER"
 cd ..
 rm -f current
-ln -s /home/jusee/releases/$DEPLOY_BUILD_FOLDER current
+ln -s $DEPLOY_PATH/$DEPLOY_BUILD_FOLDER current
 echo "Post deploy commands"
 cd current
 #cachetool --fcgi=127.0.0.1:9000 opcache:reset
