@@ -67,3 +67,4 @@ chromedriver.log
 .DS_Store
 #/composer.lock
 
+.env.dist
